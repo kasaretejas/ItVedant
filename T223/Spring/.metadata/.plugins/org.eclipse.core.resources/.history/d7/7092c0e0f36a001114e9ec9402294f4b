@@ -1,0 +1,21 @@
+package com.tejas.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
+@Entity
+@Data
+public class Cart {
+	@ManyToOne()
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	
+	@ManyToOne()
+	@JoinColumn(name="product_id")
+	private Product product;
+	
+	private int qunatity;
+
+}

@@ -1,0 +1,11 @@
+method without body called as abstract method
+to define abstract method, we have to use abstract keyword
+
+if a class has abstract method, then we have to define that class as abstract class
+we can't create object of abstract class
+abstract class can have non-abstract/concrete methods (method with body)
+
+child class is repsonsible to provide implementation of abstract methods of parent class
+
+if child class failed to implement abstract methods its parent class then
+child class also treated as abstract class

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.tejas.services.UserDetailsService.java&apos; to &apos;MyUserDetailsService.java&apos;&#x0D;&#x0A;- Original project: &apos;Easy-Mart&apos;&#x0D;&#x0A;- Original element: &apos;com.tejas.services.UserDetailsService.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.tejas.services.MyUserDetailsService.java&apos;" description="Rename compilation unit &apos;UserDetailsService.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.tejas.services{UserDetailsService.java" name="MyUserDetailsService.java" references="false" stamp="1781175979264" version="1.0"/>
+</session>

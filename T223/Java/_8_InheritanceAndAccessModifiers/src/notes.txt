@@ -1,0 +1,2 @@
+IMP : inheritance notes are given in the class
+

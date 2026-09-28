@@ -1,0 +1,191 @@
+unwanted events that interrupt normal flow of execution, called as error
+
+there are 2 types of errors
+	1. compile time
+		occurs while compile time. 
+		ex - syntax errors
+		by 100% developer
+	2. run time
+		occurs while run time. 
+		ex - we asked for int and user enters string (cant convert string to int)
+		by developer : wrong logic (ex dividing 2 numbers, second number may be zero)
+		by user : giving wrong input
+		
+the runtime errors, that can be managed/handled, called as exception
+the runtime errors, that can not be managed/handled, called as errors
+
+what does managed/handled means?
+	providing alternate code for normal execution 
+	we do not completely solved! 
+	
+	ex : finding java book by author X on amazon
+		 what if java book by author X is not available?
+		 		1. amazon will show other books written by author X
+		 		2. Java Book by other authors.
+		 		
+		 		
+exception handling  is the process of providing alternate solution to runtime errors
+for normal termination of program.
+
+how this "exception handling" process carried out?
+---> by using special type of blocks: try, catch and finally blocks
+
+when you write a code, find out risky line in that code.
+risky code :  line(s) of code that may raise an exception
+ex : asking int from user
+		risky code : int num = scanner.nextInt(); ---> risky because if user enters string then it cant be convert to int
+try:---------> used to write risky code :the code that may raise an exception
+catch:-------> used to write handling code
+finally:-----> used to write resource deallocation code (close DB connection, close file, close internet connection)
+		 
+	
+	
+-------------------------------------------------------------
+if "Exceptions are runtime events that can be handled" 
+then what about InterruptedException? this exception comes at 
+compile time, not in runtime. so according to defination, 
+InterruptedException must not be exception 
+	
+Excellent question — this is exactly the kind of thinking interviewers love 👍
+
+But there’s a **small misunderstanding** in your reasoning. Let’s fix it clearly.
+
+---
+
+## 🔥 Core confusion
+
+You said:
+
+> *InterruptedException comes at compile time*
+
+❌ That’s **not correct**
+
+👉 **InterruptedException does NOT occur at compile time**
+👉 It occurs at **runtime**, just like all exceptions
+
+---
+
+## 💡 Then why compiler forces us to handle it?
+
+Because of this concept 👇
+
+### ✅ Checked vs Unchecked Exceptions
+
+| Type                    | Example                | When checked?                           | When occurs? |
+| ----------------------- | ---------------------- | --------------------------------------- | ------------ |
+| **Checked Exception**   | `InterruptedException` | Compile time (compiler forces handling) | Runtime      |
+| **Unchecked Exception** | `NullPointerException` | No compile-time check                   | Runtime      |
+
+---
+
+## 🔍 Key Insight (VERY IMPORTANT)
+
+👉 **“Checked at compile time” ≠ “Occurs at compile time”**
+
+* `InterruptedException` is:
+
+  * ✔ **Checked at compile time**
+  * ✔ **Occurs at runtime**
+
+---
+
+## 💥 Example
+
+```java
+Thread.sleep(1000);
+```
+
+Compiler says:
+
+```
+Unhandled exception: InterruptedException
+```
+
+👉 Why?
+
+* Because Java forces you to **handle possibility** of interruption
+
+But actual exception happens only when:
+
+* Thread is **interrupted during execution (runtime)**
+
+---
+
+## 🧠 Correct Definition (Refined)
+
+> “Exceptions in Java are runtime events. Some exceptions (checked exceptions) are enforced by the compiler to be handled, but they still occur only at runtime.”
+
+---
+
+## 🎯 Final Answer to Your Argument
+
+> “InterruptedException must not be exception”
+
+❌ Incorrect
+
+✔ It **is an exception**
+✔ It **occurs at runtime**
+✔ It is just **checked at compile time**
+
+---
+
+## 🔥 One-line Interview Killer Answer
+
+> “All exceptions occur at runtime, but some are checked at compile time for mandatory handling.”
+
+---
+
+If you want, I can give you a **visual hierarchy of Throwable (Exception vs Error)** — that will make this 100% crystal clear.
+
+
+----------------------------------------------------------------------
+Error : Compile Time & Runtime
+
+Runtime : Exception & Error
+
+Exception : Checked & Unchecked
+
+Checked : Exception
+					IOException > FileNotFoundException
+					ClassNotFoundException
+					SQLException
+					InterupedException
+					
+Unchecked : Exception
+					RuntimeException
+						ArithmaticException
+						ArrayIndexOutOfBoundException
+						StringIndexOutOfBoundException
+						NullPointerException
+						NumberFormatException
+							ex:int num = Integer.parseInt("abc");  // ❌ Exception
+						InputMismatchException
+							ex : int num = sc.nextInt();  // when user enters string
+							
+							
+Error : Error :
+			OutOfMemoryError
+			StatckOverFlowError
+			VirtualMachinerError
+						
+						
+						
+RULES :
+1. always write catch with try
+2. we can write multiple catch with single try
+3. code after line on which exception raise, will not executes
+4. if exception is raised, but not handled, leads to abnormal termination
+5. exception raised outside a try block always leads to abnormal termination
+						
+					
+			
+
+	
+	
+	
+	
+	
+	
+	
+	
+	

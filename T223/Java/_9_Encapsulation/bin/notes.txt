@@ -1,0 +1,12 @@
+Encapsulation :
+	encapsulation means making variables and methods of a class
+	private so no one can access them directly
+	
+	when we make variables private, then 
+		1. to set value to those private variables, we create methods called as setters
+		2. to get value from those private variables, we create methods called as getters
+		
+	Why encapsulation : 
+		1. restrict direct data access
+		2. taking variables under control
+		3. data security

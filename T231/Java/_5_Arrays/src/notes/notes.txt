@@ -1,0 +1,38 @@
+i want 3 variables with data type : int
+
+int x = 10;
+int y= 20;
+int z= 30;
+
+is there any way by which i can create only one int variable that stores multiple values?
+ANS : yes! by using arrays
+
+1. therefore : arrays are used to store multiple values of same data type
+2. array have fixed length (while creating array we ahve to specify its length)
+	we have to tell how many values we are going to store inside array while creating an array
+3. array is zero based. (indexing/couting/position starts from zero)  
+	
+--------------------------------------- How to create array?
+there are two ways
+1. when we already know the elements
+	int[] ages={5, 9, 10, 34}; 
+	System.out.println(Arrays.toString(ages));
+2. when we know how many elements but we dont know the elements
+	int[] marks = new int[3]; 
+	marks[0] = 97;
+	marks[1] = 45;
+	marks[2] = 89;
+	marks[3] = 70; //ERROR
+	System.out.println(Arrays.toString(marks));
+	
+----------------------------------------- How to access array elements
+1. using index
+2. using for loop
+3. using enhanced for loop
+	
+	
+	
+	
+	
+	
+	

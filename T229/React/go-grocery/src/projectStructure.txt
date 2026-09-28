@@ -1,0 +1,14 @@
+common
+    Register.jsx
+    Login.jsx
+admin
+   AdminNavabr.jsx
+   AdminDashboard.jsx 
+vendor
+   VendorNavabr.jsx
+   VendorDashboard.jsx 
+
+customer
+    CustomerNavabr.jsx
+    FilterNavbar.jsx
+    Home.jsx

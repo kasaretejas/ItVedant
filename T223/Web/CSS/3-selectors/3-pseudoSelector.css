@@ -1,0 +1,29 @@
+a
+{
+    text-decoration: none;
+}
+
+a:link
+{
+    color: red;
+}
+
+a:visited
+{
+    color: rgb(82, 231, 82);
+}
+
+a:active
+{
+    color: yellow;
+}
+
+h1:hover
+{
+    color: pink;
+}
+
+input:focus
+{
+    box-shadow: 5px 3px 5px grey;
+}

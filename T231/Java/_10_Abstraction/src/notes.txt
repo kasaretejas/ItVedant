@@ -1,0 +1,61 @@
+Imagine there is a Vehicle. so how many wheels does Vehicle have?
+	---> depends on type of Vehicle
+Now imagine above scenario as:
+	Vehicle-----> class Vehicle
+	wheels -----> method wheels()
+	
+	so here we can say there is class Vehicle has wheels method
+	but we cant say how many wheel does Vehicle have. 
+	it is completely depends on type of Vehicle
+	
+	class Vehicle
+	{
+		void wheels() {}   <----- {} means method with body
+		
+		void wheels();     <------ ; means method without body
+	}
+	
+	here we cant say how many wheel but we can say Vehicle compulsory have wheels
+	
+	because of above confusion, we cant write body of method wheels
+	
+	such methods without body are called as abstract methods
+	
+	simply : we know these methods exists but we dont know their implementation/body/logic/code
+	
+	ex : Vehicle ------> wheels     : no of wheels depends on type of vehicle
+		 Database -----> connection : connection is depends on type of database
+	
+	
+---> IF there is abstract method present in any class, then that class must be defined as abstract class
+
+Abstract class : 
+	A class with an abstract method is called as abstract class
+	abstract class can have zero abstract methods
+	we can not create object of abstract class
+	abstract class can have non-abstract/concrete/methods with body methods
+	
+If we want 100% abstraction thwn we have to use : Interface 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+	
+	
+	

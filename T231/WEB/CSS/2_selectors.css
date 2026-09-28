@@ -1,0 +1,49 @@
+h1 {
+    color: red;
+
+}
+
+/* inGreen here css treats inGreen as a tag, we dont have inGreen tag */
+#inGreen
+{
+    color: green;
+
+}
+
+#inBlue
+{
+    color: blue;
+}
+
+/* class selector  */
+.inOrange
+{
+    color: orange;
+}
+
+/* group selector  */
+#inGreen, .inOrange
+{
+    background-color: pink;
+}
+
+/* child selectors  */
+div > h4 
+{
+    color: red;
+}
+
+div > section > h4 
+{
+    color: green;
+}
+
+div + h4
+{
+    color: blue;
+}
+
+div ~ h4
+{
+    background-color: yellow;
+}

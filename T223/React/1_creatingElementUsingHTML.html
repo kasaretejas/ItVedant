@@ -1,0 +1,15 @@
+<!-- create div in html and add h1 inside it using JS -->
+ <html>
+    <head>
+        <title>Element using HTML</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>
+            let root = document.getElementById("root")
+            let h1 = document.createElement("h1")
+            h1.textContent="This h1 created using JS"
+            root.appendChild(h1)
+        </script>
+    </body>
+ </html>

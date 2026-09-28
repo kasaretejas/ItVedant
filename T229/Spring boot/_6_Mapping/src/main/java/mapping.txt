@@ -1,0 +1,42 @@
+Employee -------> id, name, salary, address_id(FK), department_id(FK)
+Address  -------> id, city, pincode
+Department -----> id, name
+BankAccount ----> id, accountNumber, bankName, employee_id(FK)
+Project  -------> id, name, department_id(FK)
+
+Employee   1<---->1 Address (kisika bhi id kisi ke bhi pass as FK ja sakta he. but verbally sahi hona chaniye)
+Employee   N<---->1 Department (jo many hota he uske pass one ki id jati he as FK)
+Employee   1<---->N BankAccount
+Employee   N<---->N Project
+Department 1<---->N Project 
+
+
+
+
+Employee (employee cant have projec id)
+id  name, age, salary,    project_id
+1          					22   ----> 
+1          					11   ----> duplicate employee data
+1          					33   ----> duplicate employee data
+2          					22
+3          					22
+4          					11
+
+Project (project cant have employee id)
+id     employee_id
+11      1  ---------> 
+11      4  ---------> duplicate project data 11
+22      1  ---------> duplicate project data 22
+22      2  ---------> duplicate project data 22
+22      3  ---------> duplicate project data 22
+33      1
+
+
+teherfore create separate table
+EmployeeProject table
+
+employee_id    project_id
+1                 22
+1                 11
+1                 33
+

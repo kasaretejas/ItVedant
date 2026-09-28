@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>ELEMENT USING REACT</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+        <script>
+            let root = document.getElementById("root")
+            let myh1=React.createElement("h1",null, "h1 using REACT")
+            //ReactDOM.render(myh1,root)
+            let myRoot=ReactDOM.createRoot(root)
+            myRoot.render(myh1)
+        </script>
+    </body>
+    
+</html>

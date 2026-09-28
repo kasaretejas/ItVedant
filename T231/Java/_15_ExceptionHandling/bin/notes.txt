@@ -1,0 +1,54 @@
+Error : unwanted events that inturrupts normal flow of execution of code!
+
+There are 2 types of errors
+1. compile time
+	occurs during compile time
+	because of syntax error
+	by developer
+	100% solvable
+	
+2. run time
+	occurs during runtime
+	because of user (wrong input) OR developer (wrong logic)
+	can not solve but handle
+		A. if we are able to handle runtime error ----> exception
+		B. if we are not able to handle run time errors ----> error
+Exception : 
+	Run time errors that can be handled!	
+Exception Handling : 
+	Exception handling is process of providing alternate code for normal excecution of program
+	in exception handling process we have to understand 2 things
+		1. code, that may raise an exception --------------------------> risky code -------> try block
+		2. if there is exception, then coresponding handling code -----> handling code ----> catch block
+	since there are 2 type sof codes, (risky code and handling code) they must be write on different places
+	risky code -------> try block
+	handling cocde ---> catch block!
+	
+	try 
+	{
+		risky code
+	}
+	catch(ExceptionClassName obj)
+	{
+		HandlingCode
+	}
+	
+	
+	
+Exception types
+	1. checked 	Exception
+	2. unchecked Exception
+	
+	
+	
+	
+there may be chance of raising multiple type of exceptions. therefore we can use multiple catch with one try
+	
+for every exception, there is bulit in handling class present  in java
+the parent class of all exception is "Exception"	
+	
+
+when exception raised in try block, java creates object of its respective exception class
+	
+	
+	

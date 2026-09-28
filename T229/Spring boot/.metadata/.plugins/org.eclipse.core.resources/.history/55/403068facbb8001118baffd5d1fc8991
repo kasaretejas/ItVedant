@@ -1,0 +1,52 @@
+package com.tejas.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.tejas.custom_response.CustomResponse;
+import com.tejas.custom_response.Response;
+import com.tejas.entities.Cart;
+import com.tejas.entities.Customer;
+import com.tejas.entities.Product;
+import com.tejas.repositories.CartRepository;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.ProductRepository;
+
+@Service
+public class CartService {
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	Response response;
+	
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	public ResponseEntity<CustomResponse> addToCart(long customerId, long productId)
+	{
+		if(cartRepository.existsByCustomerIdAndProductId(customerId, productId))
+		{
+			return response.send("Product is already in the cart", null, HttpStatus.FOUND);
+		}
+		else
+		{
+			Customer existingCustomer=customerRepository.findById(customerId).get();
+			Product existingProduct=productRepository.findById(productId).get();
+			
+			Cart cart = new Cart();
+			cart.setCustomer(existingCustomer);
+			cart.setProduct(existingProduct);
+			cart.setQuantity(1);
+			
+			Cart savedCart=cartRepository.save(cart);
+			return response.send("Product added in the cart", savedCart, HttpStatus.OK);
+		}
+	}
+
+}

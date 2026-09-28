@@ -1,0 +1,237 @@
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+export default function UpdateProductTest() {
+
+let urlParameters=useParams()
+const productId = urlParameters.id
+let navigate=useNavigate()
+
+let {register,handleSubmit, formState,watch}=useForm()
+const selectedCategoryId = watch("category");
+
+const [categories, setCategories] = useState([]);
+const [subCategories, setSubCategories] = useState([]);
+const [product, setProduct] = useState(null);
+const [loading, setLoading] = useState(true);
+
+useEffect(()=>{
+    async function fetchData()
+    {
+        setLoading(true);
+        const [categoriesResponse, productResponse] = await Promise.all(
+            [
+                fetch("http://localhost:8080/api/v1/vendor/categories"),
+                fetch(`http://localhost:8080/api/v1/vendor/product-by-id/${productId}`)
+            ])
+        let categoriesResponseObject=await categoriesResponse.json()
+        let productResponseObject=await productResponse.json()
+        
+        setCategories(categoriesResponseObject.data)
+        setProduct(productResponseObject.data)
+
+        setLoading(false);
+
+    }
+    fetchData()
+},[productId])
+
+useEffect(() => {
+    if (!selectedCategoryId) {
+      setSubCategories([]);
+      return;
+    }
+  
+    const selectedCategory = categories.find(
+      (cat) => cat.id === Number(selectedCategoryId)
+    );
+  
+    setSubCategories(selectedCategory?.subCategories || []);
+  }, [selectedCategoryId, categories]);
+
+
+async function collectFormData(formData)
+{
+          console.log(formData);
+  
+          let formDataObject = new FormData()
+          formDataObject.append("productObject", JSON.stringify(
+          {
+            name:formData.name,
+            description:formData.description,
+            price:formData.price,
+            quantity:formData.quantity,
+            brand:formData.brand,
+            subCategory:{id:formData.subCategory}
+          }
+        ))
+  
+       formDataObject.append("image",formData.imageName[0])
+  
+          
+        let response= await fetch(`http://localhost:8080/api/v1/vendor/products/1/${productId}`,
+                                  {
+                                    method:"PUT", 
+                                    body:formDataObject
+                                  })
+          let responseObject = await response.json()
+          toast.success("Product Updated!")
+          navigate("/vendor")
+          
+}
+return (
+    <div className="container mt-2" style={{ maxWidth: 500 }} >
+        <p className='text-center fs-1 fw-bold'>Update Product</p>
+        { loading?"Loading":  
+        <form onSubmit={handleSubmit(collectFormData)} noValidate className='mt-3 border p-4 rounded-5' >
+          
+          {/* select category and sub category  */}
+          <div className='row'>
+              {/* category select  */}
+              <div className="mb-2 col-6">
+            <label className="form-label">Select category</label>
+             <select className={`form-select ${formState.errors.category ? "is-invalid" : ""}`}
+              {...register("category", {required: {value:true, message:"Please select category"}})}
+            >
+  
+                  <option value="">Select Category</option>
+                      {categories.map((category)=>{
+                        return <option key={category.id} value={category.id}>{category.name}</option>
+                      })}
+              </select>
+  
+            {/* Reserved error space */}
+            <div style={{ minHeight: "20px" }}>
+              {formState.errors.category && (
+                <div className="invalid-feedback d-block">
+                  {formState.errors.category.message}
+                </div>
+              )}
+            </div>
+              </div>
+  
+              {/* sub category select  */}
+              <div className="mb-2 col-6">
+                  <label className="form-label">Select sub-category</label>
+                  <select className={`form-select ${formState.errors.subCategory ? "is-invalid" : ""}`}
+                    {...register("subCategory", {required: {value:true, message:"Please select sub-category"}})}
+                  disabled={!subCategories.length}>
+  
+                        <option value="">Select Sub-Category</option>
+                            {subCategories
+                            .filter((sub) => sub.name) // remove null names
+                            .map((sub) => (
+                              <option key={sub.id} value={sub.id}>
+                                {sub.name}
+                              </option>
+                            ))}
+                  </select>
+  
+            {/* Reserved error space */}
+            <div style={{ minHeight: "20px" }}>
+              {formState.errors.subCategory && (
+                <div className="invalid-feedback d-block">
+                  {formState.errors.subCategory.message}
+                </div>
+              )}
+            </div>
+              </div>
+          </div>
+         
+          {/* input price and quantity  */}
+          <div className='row'>
+              <div className="mb-2 col-6">
+                    <label className="form-label">Product Price:</label>
+                    <input type="number" defaultValue={product.price} className={`form-control ${formState.errors.price ? "is-invalid" : ""}`}
+                      {...register("price", {required: {value:true, message:"Product price required"}})}
+                    />
+                    <div style={{ minHeight: "20px" }}>
+                      {formState.errors.price && (
+                        <div className="invalid-feedback d-block">
+                          {formState.errors.price.message}
+                        </div>
+                      )}
+                    </div>
+              </div>
+  
+              <div className="mb-2 col-6">
+                  <label className="form-label">Product quantity:</label>
+                  <input type="number" defaultValue={product.quantity} className={`form-control ${formState.errors.quantity ? "is-invalid" : ""}`}
+                    {...register("quantity", {required: {value:true, message:"Product quantity required"}})}
+                  />
+                  <div style={{ minHeight: "20px" }}>
+                    {formState.errors.quantity && (
+                      <div className="invalid-feedback d-block">
+                        {formState.errors.quantity.message}
+                      </div>
+                    )}
+                  </div>
+              </div>
+          </div>
+  
+          {/* input brand and select image  */}
+          <div className='row'>
+              <div className="mb-2 col-6">
+                    <label className="form-label">Product brand:</label>
+                    <input type="text" defaultValue={product.brand} className={`form-control ${formState.errors.brand ? "is-invalid" : ""}`}
+                      {...register("brand", {required: {value:true, message:"Product brand required"}})}
+                    />
+                    <div style={{ minHeight: "20px" }}>
+                      {formState.errors.brand && (
+                        <div className="invalid-feedback d-block">
+                          {formState.errors.brand.message}
+                        </div>
+                      )}
+                    </div>
+              </div>
+  
+              <div className="mb-2 col-6">
+                  <label className="form-label">Product image:</label>
+                  <input type="file" className={`form-control ${formState.errors.imageName ? "is-invalid" : ""}`}
+                    {...register("imageName", {required: {value:true, message:"Product image required"}})}
+                  />
+                  <div style={{ minHeight: "20px" }}>
+                    {formState.errors.imageName && (
+                      <div className="invalid-feedback d-block">
+                        {formState.errors.imageName.message}
+                      </div>
+                    )}
+                  </div>
+              </div>
+          </div>
+  
+          <div className="mb-2">
+            <label className="form-label">Product Name:</label>
+            <input type="text" defaultValue={product.name} className={`form-control ${formState.errors.name ? "is-invalid" : ""}`}
+              {...register("name", {required: {value:true, message:"Product Name required"}})}
+            />
+            <div style={{ minHeight: "20px" }}>
+              {formState.errors.name && (
+                <div className="invalid-feedback d-block">
+                  {formState.errors.name.message}
+                </div>
+              )}
+            </div>
+          </div>
+  
+          <div className="mb-2">
+            <label className="form-label">Product description:</label>
+            <input type="text" defaultValue={product.description} className={`form-control ${formState.errors.description ? "is-invalid" : ""}`}
+              {...register("description", {required: {value:true, message:"Product description required"}})}
+            />
+            <div style={{ minHeight: "20px" }}>
+              {formState.errors.description && (
+                <div className="invalid-feedback d-block">
+                  {formState.errors.description.message}
+                </div>
+              )}
+            </div>
+          </div>
+              
+          <button className="btn btn-primary w-100">Submit </button>
+        </form>}
+      </div>
+  )
+}

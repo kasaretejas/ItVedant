@@ -1,0 +1,48 @@
+Access Modifier : 
+	we define a scope of accessibility of  member of a class
+	public, protected, default, private
+Non-access modifiers : 
+	we define a characterstic/feature of a member of a class
+	final, abstract, static
+	
+Example : 
+	let we have create a variable as -----> public final int x = 10;
+	according to above access modifier (public) we can access x anywhere in the project
+	but according to Non-access modifiers (final) we cant change value of x
+	
+	
+final: final can be a variable, method, or class
+----> final variable :  we cant change its value
+----> final method :  we cant override that method
+----> final class :  we cant extend that class (inheritance not possible)
+
+abstract : abstract can be method and class , NOT VARIABLE
+----> abstract method : a method without body/implementation
+----> abstract class : a class with abstract method
+
+static : static can be a  variable, method, or class
+----> static variable : the value of variable is same for all objects. (Accessed using class name)
+						only one copy shared with all objects. 
+						value of static variable can be changed
+----> static method : used to work with ONLY static members of a class (Accessed using class name)
+----> static class : we can only make inner class (class inside class) as static class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

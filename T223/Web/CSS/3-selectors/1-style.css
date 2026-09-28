@@ -1,0 +1,38 @@
+/* default selector syntax */
+/* tag {  property : value } */
+
+/* tag selector  */  
+h1
+{
+    color: green;
+}
+
+#h1_blue
+{
+    color: blue;
+   
+}
+
+#h1_orange
+{
+    color: orange;
+}
+
+.in_red
+{
+    color: red;
+}
+
+/* group selector  */
+h1, .in_red  
+{
+    text-decoration: underline;
+}
+
+/* not selector to exclude tag/id/class  */
+h1:not(#h1_blue,#h1_orange) 
+{
+    background-color: pink;
+}   
+
+/* above css will select all h1 tag except those h1 whos id is #h1_blue and #h1_orange */

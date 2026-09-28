@@ -1,0 +1,57 @@
+#parent
+{
+    border: 2px solid black;
+    height: 600px;
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: column; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column-reverse; */
+
+    /* type 1 : consider flex-direction - row  */
+    /* flex-direction - row , moving items in row, use justify-content */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* justify-content: end; */
+    /* justify-content: start; */
+
+    /* justify-content: space-around; */
+    /* justify-content: space-between; */
+    /* justify-content: space-evenly;  */
+
+    /* flex-direction - row , moving items in column, use align-items */
+    /* align-items: center; */
+    /* align-items: start; */
+    /* align-items: end; */
+
+    /* type 2 : consider flex-direction - column  */
+    /* flex-direction - column , moving items in column, use justify-content */
+    
+    flex-direction: column;
+
+    /* justify-content: center; */
+    /* justify-content: start; */
+    /* justify-content: end; */
+
+    /* justify-content: space-around; */
+    /* justify-content: space-between; */
+    /* justify-content: space-evenly; */
+
+    /* align-items: center; */
+    /* align-items: start; */
+    /* align-items: end; */
+    
+
+}
+#parent > .box
+{
+    border: 1px solid black;
+    font-size: 70px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: pink;
+}

@@ -1,0 +1,25 @@
+one entity show different behavior on different places
+ex : operator 
+	 5+3 ====> 8 ===> addition
+	 "hi"+"bye"=====>hibye ====> concatenation
+	 we can say, if operand is changing, the behavior of + is changing
+	 this is called as operator polymorphism
+
+simililarly we can have method polymorphism
+	sometimes method also shows different behavior on different places(in same class, in different class)
+	method polymorphism has 2 types
+	1. method overloading ----> compile time polymorphism -----> static binding
+		when one class has multiple methods with same name but different signature
+		different signature means
+			---> either number of parameters are different 
+			---> or data type of parameters are different 
+	2. method over riding ----> run time polymorphism ---------> dynamic binding
+		only happens in inheritance when parent class and child class has methods with same name
+		simply we can say that child is OEVRRIDING parent class's method
+		
+		why need to override ?
+			1. parent class has partial implementation of method
+			2. parent class has incorrect implementation of method
+			therefore child class overrides the method
+			
+

@@ -1,0 +1,101 @@
+package com.tejas.services;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.tejas.custom_response.CustomResponse;
+import com.tejas.custom_response.Response;
+import com.tejas.entities.Cart;
+import com.tejas.entities.Customer;
+import com.tejas.entities.Product;
+import com.tejas.repositories.CartRepository;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.ProductRepository;
+
+@Service
+public class CartService {
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	Response response;
+	
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	public ResponseEntity<CustomResponse> addToCart(long customerId, long productId)
+	{
+		if(cartRepository.existsByCustomerIdAndProductId(customerId, productId))
+		{
+			return response.send("Product is already in the cart", null, HttpStatus.FOUND);
+		}
+		else
+		{
+			Customer existingCustomer=customerRepository.findById(customerId).get();
+			Product existingProduct=productRepository.findById(productId).get();
+			
+			Cart cart = new Cart();
+			cart.setCustomer(existingCustomer);
+			cart.setProduct(existingProduct);
+			cart.setQuantity(1);
+			
+			Cart savedCart=cartRepository.save(cart);
+			return response.send("Product added in the cart", savedCart, HttpStatus.OK);
+		}
+	}
+
+	public ResponseEntity<CustomResponse> getCartItemsByCustomerId(long customerId)
+	{
+		List<Cart> cartItems=cartRepository.findByCustomerId(customerId);
+		
+		 List<Map<String, Object>> cartResponse = new ArrayList<>();
+		 if (cartItems.size() > 0) 
+		 {
+	        for (Cart cart : cartItems) 
+	        {
+
+	            Map<String, Object> item = new HashMap<>();
+
+	            item.put("id", cart.getId());
+	            item.put("quantity", cart.getQuantity());
+	            item.put("product", cart.getProduct());
+
+	            cartResponse.add(item);
+	        }
+
+	        return response.send("Following cart items found",cartResponse,HttpStatus.OK);
+	       }
+		else
+		{
+			return response.send("There are no products in the cart", null, HttpStatus.NOT_FOUND);
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

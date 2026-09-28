@@ -1,0 +1,14 @@
+access modifiers :
+	access = permission
+	
+	access modifiers are used to define up to where we can access members of the class
+	members of the class = things that present inside a class (variables, methods, class)
+	
+	accessibility area = inside package, outside package, inside class
+	
+	Project > Package > File > class > variables/methods/class
+	
+	public =======> anywhere in the project
+	protected ====> inside same package,  outside a package but using INHERITANCE !
+	default ======> inside same package ONLY.
+	private ======> inside same class ONLY.

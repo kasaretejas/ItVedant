@@ -1,0 +1,48 @@
+1. Abstract
+	abstract can be a method or a class
+	abstract method : a method without body/implementation
+	abstract class : a class who has abstract methods
+					 abstract class can have zero abstract methods
+					 we cant create object of abstract class
+					 child class is responsible to provide body from abstract methods
+					 
+--------------------------------------------------------------------------------
+2. final 
+	final can be a variable, a method or a class
+	final variable : we cant change its value
+	final method : we can override that method
+	final class : we cant extend that class
+				  only outer class can be final
+	
+--------------------------------------------------------------------------------
+3. static
+	static can be a variable, a method or a class
+	static variable : a variable whos value is same for all objects
+					  we can access static variable directly by class name
+	static method : used to access/modify only static members of a class
+					we cant access/modify non-static members of a class
+					we can access static method directly by class name
+	static class : 	only inner class are static (inner class - class inside class)	
+					if we create inner class as static class then it is called as nested class
+					it is used for loose coupling between parent and child class
+					we dont need object of outer class to create object of nested class (inner static class)
+					
+					outer --> class College
+									inner ---> class Teacher
+									inner ---> class Department
+									
+					here College and Teacher as loosely connected/coupled
+						therefore we dont need object of College to create object of Teacher
+						
+					here College and Department as tightly connected/coupled
+						therefore we need object of College to create object of Department			
+				
+	
+	
+	
+	
+	
+	
+	
+	
+	

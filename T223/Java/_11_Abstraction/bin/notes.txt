@@ -1,0 +1,34 @@
+A method that we know exists, but we dont know its implementation.
+The implementation of such method is provided by child class.
+such methods are called as abstract method.
+
+Abstract methods declared with abstract keyword.
+
+abstract methods are having zero implementation. (NO BODY)
+
+void add() {}       ------> normal method
+void add();         ------> abstract method, declared as --> abstract void add(); 
+
+the class who has abstract methods, called as Abstract class
+
+An abstract class can have zero abstract method.
+If there is abstract method in a class, then that class must be declared as Abstract class
+
+Abstract class can have non abstract methods
+
+if child class failed/not implemented abstract method of parent class, then 
+child class also treated as abstract class.
+
+we can not create object of abstract class.
+
+
+
+
+
+
+
+
+
+
+
+

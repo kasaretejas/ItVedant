@@ -1,0 +1,16 @@
+package _1_Loops;
+
+public class ForLoopUnderstanding {
+
+	public static void main(String[] args)
+	{
+		// display 4 to 9 numbers
+		for(int i=4; i<=9; i++)
+		{
+			System.out.println(i);
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,35 @@
+#box1, #box2
+{
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+}
+/* margin : distance outisde a border or order to border  */
+#box1
+{
+    /* 
+    margin: T R B L;
+    margin: T LR B
+    margin: TB LR;
+    margin: TRBL;
+    margin: 50px 100px 80px 100px; */
+    margin-top: 80px;
+    margin-left: 100px;
+}
+
+#box2
+{
+    margin-top:50px;
+}
+
+#box1>p
+{
+    /* 
+    padding: T R B L;
+    padding: T LR B
+    padding: TB LR;
+    padding: TRBL;
+    padding: 50px 100px 80px 100px; */
+    padding-left: 50px;
+    padding-top: 50px;
+}

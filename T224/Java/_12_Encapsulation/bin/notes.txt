@@ -1,0 +1,42 @@
+encapsulation :
+	is the process of binding data members into a class by making them private.
+	because of this, we cant directly access them.
+	
+	the process of binding variables and method together into a class and
+	controlling their access by using access modifiers.
+	
+	
+	if we cant access them, then how we initialize them?
+	by using concept : getters and setters methods
+		getter methods : used to get value from private variable
+		setter methods : used to set value to private variable
+		
+		because of this, we can take control of variable
+		
+	VIMP : should I have to create constructor or just getters and setters of both?
+	
+	1. if you have instance variables, then it is recommended to create constructor.
+		what constructor do here is, just initialize instance variables.
+		
+		what if I want to change the value of instance variables? ---> setters
+		
+		i want to update values of instance variables after initialize by constructor ----> use setters
+		
+		to collect value of instance variables -----> use getters
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

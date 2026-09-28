@@ -1,0 +1,66 @@
+problem 
+	int n1 =10;
+	int n2 =20;
+	int n3 =30;
+	int n4 =40;
+	
+	above all variables has same data type so can we store all values in single variable?
+	YES : using array
+	
+what is array?
+	- array is used to store multiple values in single variable. but it has following conditions
+		1. all values must be of same data type
+		2. how many values (size) an array is going to store that we have to declare initialy
+				when? - while declaring array
+				imp : later we can not change its size
+				therefore we can has 
+				
+		   arrays have fixed length(size)
+		   
+what is array?
+	collection of same data type values with fixed length.
+	
+how to declare an array
+	there are 2 ways:
+		way 1: has 3 variations
+			int[] arr1  = new int[5]; //there will be only 5 values in array arr
+			int [] arr2 = new int[15]; 
+			int arr1[] = new int[8]; //popular
+			
+			later we have to add values in above array
+		way 2: 
+			int arr[] = {10,20,30};
+			in above declaration the size of an array will be automatically 3
+			
+when to use which way?
+	way 1 : when we dont know elements, but we know size of an array
+	way 1 : when we know elements, but we dont know size of an array
+
+
+type of an array:
+	1. one dimensional array
+	2. multi dimensional array
+	3. jagged array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	
+	
+	
+	
+	
+	
+	

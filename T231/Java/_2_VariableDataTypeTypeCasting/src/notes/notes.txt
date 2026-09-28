@@ -1,0 +1,92 @@
+java project structure
+
+Project
+	package (n) --> one project can have multiple packages
+		java file (n) --> one package can have multiple java files
+			java class (n) --> one java file can have multiple java classes
+				java method (n) --> on java class can have multiple methods
+					logic --> we are allowed to write logic/code inside methods only
+				
+				
+java code structure
+
+---> package information
+---> imports (used only when it is required!)
+---> class body
+
+		
+what is variable?
+	- used to store data!
+	- we have to define variable as :
+		dataType variableName = value;	
+	- dataType in java : byte, short, int, long, boolean, char, String, array, class, interface, object
+	- variableName : name given to variable
+		--> rules for variableName
+			1. cant starts with number (further we can use number in between)	
+				int 6age=30;  ----> ERROR
+				int age6=30;  ----> CORRECT
+			2. only _ and alphabets allowed at the beginning 
+				int _age=30;  ----> CORRECT
+				int age=30;  ----> CORRECT
+			3. dont start with caps
+				int Age=30;  ----> INCORRECT
+			4. do not use space in between
+				String full name = "raj kumar"; ----> ERRROR
+				String fullName = "raj kumar"; -----> CORRECT & REC. ---> camel notation
+			5. camel notation is recom
+		
+		
+---=--------------------------------------------------------------------------------------------
+datatypes in java 
+	--> what kind of data variable holds is defined by data type
+	--> there are 2 types of data tyupe in java
+	1. primitive
+		whole numbers
+			byte--------> 1 byte (8 bits)
+			short ------> 2 bytes
+			int --------> 4 bytes
+			long -------> 8 bytes
+		decimal numbers
+			float ------> 4 bytes
+			double -----> 8 bytes
+		yes/no type values
+			boolean ----> 1 byte
+		single character
+			char -------> 2 byte
+	2. non-primitive
+		String
+		Array
+		Class
+		Object
+		Interface
+		Enum
+		
+------------------------------------------------------------------------------
+type casting : 
+	---> converting one data type into another
+	---> there are two types of type casting
+			1. implicit / automatic (by java) -----> from lower data type to higher
+			2. explicit / manual (by developer) ---> from higher data type to lower
+			
+			byte --> short --> int --> long --> float --> double
+			
+			>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> implicit
+			<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< explicit
+			
+			
+		
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

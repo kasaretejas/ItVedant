@@ -1,0 +1,183 @@
+package com.tejas.services;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.tejas.custom_response.CustomResponse;
+import com.tejas.custom_response.Response;
+import com.tejas.entities.Product;
+import com.tejas.entities.SubCategory;
+import com.tejas.entities.User;
+import com.tejas.entities.Vendor;
+import com.tejas.repositories.ProductRepository;
+import com.tejas.repositories.SubCategoryRepository;
+import com.tejas.repositories.UserRepository;
+import com.tejas.repositories.VendorRepository;
+import com.tejas.specifications.ProductSpecification;
+
+import tools.jackson.databind.ObjectMapper;
+
+@Service
+public class ProductService {
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	SubCategoryRepository subCategoryRepository;
+	@Autowired
+	VendorRepository vendorRepository;
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	Response response;
+	
+	final private  String IMAGE_UPLOAD_DIR   = System.getProperty("user.dir")+"/uploads/images";
+	
+	public ResponseEntity<CustomResponse> addProduct(String productObject, MultipartFile image) throws IOException
+	{
+		
+		
+		//convert string product object to real product object
+		ObjectMapper objectMapper = new ObjectMapper();
+		Product product=objectMapper.readValue(productObject, Product.class);
+		
+		//set FK of sub category
+		long subCategoryId=product.getSubCategory().getId();
+		SubCategory existingSubCategory=subCategoryRepository.findById(subCategoryId).get();
+		product.setSubCategory(existingSubCategory); //setting value of sub category in subcategory_id column
+		
+		//set FK of vendor
+		long vendorId=product.getVendor().getId();
+		Vendor existingVendor=vendorRepository.findById(vendorId).get();
+		product.setVendor(existingVendor); //setting value of vendor in vendor_id column
+		
+		//setting image name
+		String imageName = image.getOriginalFilename();
+		product.setImageName(imageName);
+		
+		//writing image into uploads/images folder
+		Path completeImagePath=Paths.get(IMAGE_UPLOAD_DIR, imageName);
+		Files.write(completeImagePath,image.getBytes());
+		
+		Product savedProduct=productRepository.save(product);
+		return response.send("Product added!", null, HttpStatus.OK);
+		
+	}
+	
+	
+	//getting all products for particular vendor
+	public ResponseEntity<CustomResponse> getProductsByVendorId(long vendorId)
+	{
+		List<Product> products=productRepository.findAllByVendorId(vendorId);
+		if(products.size()>0)
+		{
+			return response.send("Following products found", products, HttpStatus.OK);
+		}
+		else
+		{
+			return response.send("There are no products, Please add some!", null, HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	
+	//update product by id
+	public ResponseEntity<CustomResponse> updateProduct(String productObject, MultipartFile image, long productId) throws IOException
+	{
+		//collecting product data based on prodcutId
+		Product existingProduct=productRepository.findById(productId).get();
+		
+		//convert string product object to real product object
+		ObjectMapper objectMapper = new ObjectMapper();
+		Product productToUpdate=objectMapper.readValue(productObject, Product.class);
+		
+		//attaching id of existingProduct to productToUpdate
+		productToUpdate.setId(productId);
+		
+		//attaching createdAt of existingProduct to productToUpdate
+		productToUpdate.setCreatedAt(existingProduct.getCreatedAt());
+		
+		//set FK of sub category
+		long subCategoryId=productToUpdate.getSubCategory().getId();
+		SubCategory existingSubCategory=subCategoryRepository.findById(subCategoryId).get();
+		productToUpdate.setSubCategory(existingSubCategory); //setting value of sub category in subcategory_id column
+		
+		//set FK of vendor
+		productToUpdate.setVendor(existingProduct.getVendor()); //setting value of vendor in vendor_id column
+		
+		//setting image name
+		String imageName = image.getOriginalFilename();
+		productToUpdate.setImageName(imageName);
+		
+		//writing image into uploads/images folder
+		Path completeImagePath=Paths.get(IMAGE_UPLOAD_DIR, imageName);
+		Files.write(completeImagePath,image.getBytes());
+		
+		Product savedProduct=productRepository.save(productToUpdate);
+		return response.send("Product updated!", null, HttpStatus.OK);
+		
+	}
+
+	
+	public ResponseEntity<CustomResponse> getProductById(long productId) 
+	{
+		Product existingProduct=productRepository.findById(productId).get();
+		return response.send("Follwoing Product found", existingProduct, HttpStatus.OK);
+	}
+	
+	
+	public ResponseEntity<CustomResponse> deleteProductById(long productId) 
+	{
+		try
+		{
+			productRepository.deleteById(productId);
+			return response.send("Product deleted!", null, HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return response.send("Product not deleted!", null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	public ResponseEntity<CustomResponse> getAllProducts()
+	{
+		List<Product> products=productRepository.findAll();
+		return response.send("Follwoing products found", products, HttpStatus.OK);
+	}
+	
+	
+	public ResponseEntity<CustomResponse> getAllFilteredProducts(String subCategoryName, String categoryName, String sortDirection, String productName)
+	{
+		Specification<Product> customFilter=Specification
+											.where(
+												   ProductSpecification.hasSubCategoryName(subCategoryName)
+												   .and(ProductSpecification.hasCategoryName(categoryName))
+												   .and(ProductSpecification.sortPriceBy(sortDirection))
+												   .and(ProductSpecification.hasProductName(productName)));
+		List<Product> filteredProducts=productRepository.findAll(customFilter);
+		return response.send("Follwoing products found", filteredProducts, HttpStatus.OK);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

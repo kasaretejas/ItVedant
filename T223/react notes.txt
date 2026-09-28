@@ -1,0 +1,23 @@
+React is a library
+we can add react in our existing project
+react has lot of packages designed for every frontend problem
+	we can get those packages from npm website
+
+react follows component based architecture
+	component : reusable structure (card-component)
+	component is simply function in react. (call it any time)
+	component name must be starts with capital letter
+react is used to create SPA - Single Page Appication (only 1 html file)
+
+useState => useState is built in function in react, used to observe,
+state (value) of a variable. if variable state (value) is changing, it will
+automatically re-render componet.
+
+another name given to built in functions in react is - hook!
+useState is hook in react
+
+
+
+
+
+

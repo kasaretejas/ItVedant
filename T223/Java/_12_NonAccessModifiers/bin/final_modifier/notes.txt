@@ -1,0 +1,5 @@
+in java final can be a variable, method and class
+
+1. if variable is final then we cant change its value
+2. if method is final then we can not override that method
+3. if class is final then we can not extend that class

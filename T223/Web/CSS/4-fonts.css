@@ -1,0 +1,14 @@
+#online-font
+{  
+  font-family: "Playwrite NO", cursive;
+}
+
+@font-face {
+    font-family: "headingFont";
+    src: url("4-fonts/headingFont.ttf");
+}
+
+#offline-font
+{
+   font-family: "headingFont"; 
+}

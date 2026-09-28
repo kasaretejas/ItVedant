@@ -1,0 +1,5 @@
+encapsulation is a process of making class variables private and
+giving them access only by creating getters and setters
+
+
+we are preventing direct access to the variables by making them private.

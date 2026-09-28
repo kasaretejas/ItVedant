@@ -1,0 +1,33 @@
+#bg-color, #bg-image, #bg-linear-gradient, #bg-radial-gradient
+{
+    height: 300px;
+    width: 600px;
+    border: 2px solid black;
+    margin-bottom: 30px;
+}
+
+#bg-color
+{
+    background-color: aquamarine;
+    border-radius: 30px;
+    box-shadow: 5px 3px 7px grey;
+}
+
+#bg-image
+{
+    background-image: url('./images/cat.jpg');
+    /* background-repeat: no-repeat; */
+    /* background-repeat: repeat-x; */
+    /* background-repeat: repeat-y; */
+    /* background-size: 100% 100%; */  
+}
+
+#bg-linear-gradient
+{
+    /* background-image: linear-gradient(red,green); */
+    background-image: linear-gradient(to right, red 80%,green);
+}
+#bg-radial-gradient
+{
+    background-image: radial-gradient(red, blue);
+}

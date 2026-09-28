@@ -1,0 +1,50 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+#navbar
+{
+    width: 100%;
+    height: 75px;
+    background-color: pink;
+    position: fixed;
+}
+#box1, #box2
+{
+    height: 700px;
+    width: 500px;
+    border: 2px solid black;
+}
+
+#chatbox
+{
+    height: 80px;
+    width: 80px;
+    border: 2px solid black;
+    background-image: url("cat.jpg");
+    background-size: 100% 100%;
+    top: 80%;
+    left: 90%;
+    border-radius: 50%;
+    position: fixed;
+}
+
+#imRelative
+{
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    left: 100px;
+    position: relative;
+    top: 100px;
+}
+#box2
+{
+    position: relative;
+}
+#box2>p
+{
+    top: 60px;
+    position: absolute;
+}

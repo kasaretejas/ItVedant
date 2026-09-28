@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>CSS Types</title>
+        <style>
+            /* selector { property : value} */
+            h2 
+                { 
+                    color: green;
+                    background-color: yellow;
+                }
+        </style>
+        <link rel="stylesheet" href="1_style.css">
+    </head>
+    <body>
+        <!-- inline css : 1-2 styles  -->
+        <!-- we use style attribute inside html tag -->
+        <!-- inline css has highest priority  -->
+        <h1 style="color: red; background-color: yellow;">Hello in Red</h1>
+
+        <!-- internal css : 2-5 style -->
+        <!-- we create style tag inside head tag  -->
+        <h2>Hello in green with yellow backgroud</h2>
+
+        <!-- external css : >5 -->
+        <!-- we create new css file and connect with html using link tag in head tag -->
+        <h3>Hello in blue</h3>
+
+        <h1>Bye</h1>
+        <h1>Bye</h1>
+    </body>
+</html>

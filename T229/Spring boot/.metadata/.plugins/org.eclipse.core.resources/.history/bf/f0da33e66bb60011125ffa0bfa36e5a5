@@ -1,0 +1,5 @@
+package com.tejas.entities;
+
+public class Cart {
+
+}

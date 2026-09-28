@@ -1,0 +1,12 @@
+shared via photo
+
+in java String is immutable.
+while to make string mutable we have 2 built in classes in java
+	1. StringBuffer
+		it is thread safe
+		here multi threading work but in synchronized way
+		all methods in StringBuffer are synchronized
+	2. StringBuilder
+		it is  not thread safe
+		here multi threading work but in asynchronized way
+		all methods in StringBuilder are not synchronized

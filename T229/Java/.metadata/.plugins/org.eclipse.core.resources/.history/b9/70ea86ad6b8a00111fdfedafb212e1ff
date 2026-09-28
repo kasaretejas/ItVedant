@@ -1,0 +1,23 @@
+package _1_Loops;
+
+public class ForLoopUnderstanding {
+
+	public static void main(String[] args)
+	{
+		// display 4 to 9 numbers vertically
+		for(int i=4; i<=9; i++)
+		{
+			System.out.println(i);
+		}
+		
+		// display 4 to 9 numbers horizontally
+		for(int i=4; i<=9; i++)
+		{
+			System.out.print(i + " ");
+		}
+		
+		// display 9 to 4 numbers horizontally
+		System.out.println("hello");
+	}
+
+}

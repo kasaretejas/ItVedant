@@ -1,0 +1,36 @@
+String = collection of characters inside in double quotes
+ex : "hello546#@YZ"
+
+there are 2 ways of creating a string
+
+------ all notes displayed on the board -----------
+
+
+once we create a string it is immutable!
+
+that is, we cant make any changes in that String
+
+if we make any chnages, then with those changes, a new string will be created on
+new memory location
+
+-------------------------------------------------------------------------
+
+I want mutable(changeable) string ----> 
+	we can perform changes on existing string, without creating new string on new location.
+	
+	to create mutable string, java has provides 2 classes :
+		1. StringBuffer
+		2. StringBuilder
+
+
+
+
+
+
+
+
+
+
+
+
+

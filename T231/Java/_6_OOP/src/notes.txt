@@ -1,0 +1,108 @@
+--------------------------- class, object and reference variable --------------------------
+class Student
+{
+	String name = "amit"; //variable OR property
+	void work() //method OR BEHAVIOR
+	{
+		System.out.println("amit is doing study");
+	}
+}
+
+public class College 
+{
+
+	public static void main(String[] args) 
+	{
+		Student student = new Student();
+		Student student1 = new Student();
+		Student s1 = new Student();
+		Student gaurav = new Student();
+		
+		System.out.println(student.name); //accessing variable OR property of Student using RV
+		System.out.println(s1.name); //accessing variable OR property of Student using RV
+		
+		student.work(); //accessing method OR BEHAVIOR of Student using RV
+		
+		//Student : class name
+		//new Student() : Object
+		//student, student1, s1, gaurav : reference variable
+		
+		//class - just plan/ blue print/structure
+		//object - real world existence of a class
+		//rv : used to access properties and behaviours of an object
+		      //properties : variables
+			  //behaviours : methods
+		      //used to access variables and methods of an object
+		      
+		//variables and methods together called as MEMBERS OF OBJECT
+
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------
+
+--------------------------------- types of variables and methods in a class -------------------------------
+Types of variables :
+	1. instance variable
+		variable values change from object to object (name, phone, email) - called as instance variable
+	2. static variable
+		variable who's value is same for all objects (college/institute name) - static variables
+		static isnt mean fix, static means same for all
+		static variable must be accessed using class name
+	3. local variable
+		variable created inside any method for general purpose
+	4. final variable
+		who's value can not be updated
+	5. reference variable
+		only created while creating object
+		used to access methods and variables of an object
+		
+		
+instance vs static
+1. variable values change from object to object
+   variable who's value is same for all objects  
+2. while declaring static variables, we use "static keyword"
+3. we do only declartion of instance variable while we do declation and initialization of static variable
+	
+Types of methods
+	1. instance
+	2. static
+	3. local
+	4. constructor
+	5. final
+	6. abstract
+
+
+name, phone, email, institute name ==> variable/property  Student(Entity)
+
+
+---------------------------------------------------------------------------------
+problem statement : where to initialize instance variable?
+Answer : inside constructor
+
+Then, What is constructor?
+	1. constructor is a method
+	2. used to initialize instance variable 
+	3. constructor get executes automatically when object is created\
+	4. constructor name is same as class name
+
+
+---------------------------------------------------------------------------
+method : methods is block of code, get execute only when we call it.
+check code
+-------------------------------------------------------------------
+types of methods:
+	instance method : used to access/call instance/static variable/method
+	static method : used to access only static variables and static methods
+
+
+
+
+
+
+
+
+
+
+

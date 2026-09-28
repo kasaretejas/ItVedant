@@ -1,0 +1,111 @@
+package com.tejas.services;
+import com.tejas.dto.VerifyPaymentRequest;
+import com.tejas.entities.Cart;
+import com.tejas.entities.OrderItem;
+import com.tejas.repositories.CartRepository;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.OrderItemRepository;
+import com.tejas.repositories.OrderRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import com.razorpay.Order;
+import com.razorpay.Payment;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
+import com.razorpay.Utils;
+import jakarta.annotation.PostConstruct;
+
+@Service
+public class PaymentService {
+	@Value("${razorpay.api.key}")
+    private String apiKey ;
+
+    @Value("${razorpay.api.secret}")
+    private String apiSecret ;
+    
+    private RazorpayClient razorpayClient;
+    
+    @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+    @Autowired
+    private CartRepository cartRepository;
+
+    
+    @PostConstruct
+    public void init() throws RazorpayException {
+    	razorpayClient = new RazorpayClient(apiKey, apiSecret);
+    }
+    
+    public JSONObject createOrder(int amount , String currency , long customerId) throws RazorpayException
+    {
+        JSONObject orderRequest  = new JSONObject();
+        orderRequest.put("amount", amount*100); 
+        orderRequest.put("currency", currency);
+        orderRequest.put("receipt",
+                "receipt_" + customerId + "_" + System.currentTimeMillis());
+
+         Order order =  razorpayClient.orders.create(orderRequest);
+         return order.toJson(); 
+    }
+    
+    public ResponseEntity<?> verifyPayment(VerifyPaymentRequest request)
+            throws RazorpayException {
+
+        JSONObject options = new JSONObject();
+
+        options.put("razorpay_order_id", request.getRazorpayOrderId());
+
+        options.put("razorpay_payment_id", request.getRazorpayPaymentId());
+
+        options.put("razorpay_signature", request.getRazorpaySignature());
+
+        boolean isValid = Utils.verifyPaymentSignature(options, apiSecret);
+
+        if(!isValid){
+            return ResponseEntity.badRequest().body("Invalid Signature");
+        }
+
+        // Payment is genuine
+        com.tejas.entities.Order order = new com.tejas.entities.Order();
+
+        order.setCustomer(customerRepository.findById(request.getCustomerId()).get());
+        order.setPaymentId(request.getRazorpayPaymentId());
+        order.setRazorpayOrderId(request.getRazorpayOrderId());
+        order.setPaymentStatus("PAID");
+        Payment payment = razorpayClient.payments.fetch(request.getRazorpayPaymentId());
+        int amountInPaise = payment.get("amount");
+        order.setTotalAmount(amountInPaise / 100.0);
+        order.setOrderDate(LocalDateTime.now());
+
+        orderRepository.save(order);
+
+        List<Cart> cartItems = cartRepository.findByCustomerId(request.getCustomerId());
+
+        for (Cart cart : cartItems) {
+
+            OrderItem item = new OrderItem();
+
+            item.setOrder(order);
+            item.setProduct(cart.getProduct());
+            item.setQuantity(cart.getQuantity());
+            item.setPrice(cart.getProduct().getPrice());
+
+            orderItemRepository.save(item);
+        }
+
+        cartRepository.deleteAll(cartItems);
+        
+        return ResponseEntity.ok("Verified");
+    }
+
+}

@@ -1,0 +1,25 @@
+- notes already shared in class
+- object reusability
+- SCP
+- Heap memory
+- immutability
+
+String buffer/builder (StringBuffer/StringBuilder)
+- strings immutable!
+	we can not make changes in  string object, if we try to perform any changes then with 
+	those changes, new object will be created 
+- StringBuffer/StringBuilder are predefined classes in java, used to create mutable string
+- StringBuffer ---> 1.0  ---> thread safe (synchronize)  ---> slower --> single threaded application
+- StringBuilder --> 1.5  ---> not thread safe  -------------> faster --> multi threaded application
+
+-thread safe means , multiple thread are allowed but in synchronized way
+
+
+
+
+
+
+
+
+
+

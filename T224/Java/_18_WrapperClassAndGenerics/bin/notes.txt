@@ -1,0 +1,52 @@
+Wrapper classes : 
+	wrapper classes are used to convert primitive data types into objects
+	wrapper class for each primitive data type
+	byte  --> Byte
+	short --> Short
+	int ----> Integer
+	long ---> Long
+	
+	float --> Float
+	double -> Double
+	
+	char ---> Character
+	boolean-> Boolean
+	
+Why we need to convert primitive data types into wrapper class?
+	1. we can create collection using objects only.
+		ArrayList <int> list = new ArrayList<>();        ERROR
+		ArrayList <Integer> list = new ArrayList<>();    CORRECT
+	2. wrapper classes has utility methods
+		int y=Integer.parseInt(b);
+		System.out.println(Integer.max(10, 30));
+		int p=Integer.valueOf("24");
+		
+Generics
+	generics are for type safety
+	T : Type for whole class
+	E : Type of Element
+	K : Type of Key
+	V : Type of Value
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

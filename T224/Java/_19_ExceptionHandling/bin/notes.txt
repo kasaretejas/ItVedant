@@ -1,0 +1,6 @@
+other notes given in class
+
+observation:
+	1. finally will not executes if control doesnt go inside try
+	2. the line on which exception raised, will not execute
+	3. if exception raised outside of try then it is always abnormal termination

@@ -1,0 +1,25 @@
+1. hello world program to check bycode file
+	- we have created file HelloWorld.java
+	- we have created public class HelloWorld
+	- becasue in java, if there is public class then file name must be same as public class name
+2. multiple class in one file
+	- we can create multiple classes in one file
+	- rule : their must be only one public class
+3. multiple public classes in one file --> NOT ALLOWED
+4. zero public classes in one file ---> ALLOWED, any file name
+4. command line arguments
+	int x;          -----> only one int value
+	String args; -----> only one string value
+	String args[]; -----> multiple string values
+
+
+
+
+
+
+
+
+
+
+
+

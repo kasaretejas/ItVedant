@@ -1,0 +1,90 @@
+problem : access members(variables/methods) of one class into another package.
+
+Solution : to access members of one class into another package, those classes must be in relationship
+Ex : class A and class B(in another package)
+
+if we want to access members of class A into class B, then class A and class B must be in ralationship
+
+there are 2 types of relationship
+	1. HAS-A
+		here we create object of class A into class B
+		therefore we can say, class B HAS-A object of class A
+	2. IS-A
+		here we use extends keyword and make parent-child relationship between class A and class B
+		class B extends A   ----> IMPORTANT - here we can not create object of class A
+		therfore class A IS-A parent of class B
+		this is-a relationship called as Inheritance
+		
+Inheritance : to access members of one class into another class we establish parent-child 
+			  relationship. this parent child relationship is called as inheritance
+			  
+			  we cant access private and default members of class A into class B if we are using
+			  inheritance
+			  
+			  therefore we have protected members specifically for inheritance
+
+Type of inheritance-
+1. single inh
+	One Parent One child
+	class B ----> class A
+	
+2. multilevel inh
+	there is levels of classes for inheritance
+	class C ----> class B ----> class A
+	
+3. multiple inh
+	there are multiple parent and one child
+	class C
+			------> class A
+	class B
+	not supported in java because 
+		a. we can extend one class at a time
+		b. diamond access problem
+	
+4. hierarchical inh
+	there are mutiple child and single parent
+	class C ------> class A
+	class B ------> class A
+5. hybrid inh
+	mixing of above any inheritance 
+
+
+
+
+
+one entity show different behavior on different places
+ex : operator 
+	 5+3 ====> 8 ===> addition
+	 "hi"+"bye"=====>hibye ====> concatenation
+	 we can say, if operand is changing, the behavior of + is changing
+	 this is called as operator polymorphism
+
+simililarly we can have method polymorphism
+	sometimes method also shows different behavior on different places(in same class, in different class)
+	method polymorphism has 2 types
+	1. method overloading ----> compile time polymorphism -----> static binding
+		when one class has multiple methods with same name but different signature
+		different signature means
+			---> either number of parameters are different 
+			---> or data type of parameters are different 
+	2. method over riding ----> run time polymorphism ---------> dynamic binding
+		only happens in inheritance when parent class and child class has methods with same name
+		simply we can say that child is OEVRRIDING parent class's method
+		
+		why need to override ?
+			1. parent class has partial implementation of method
+			2. parent class has incorrect implementation of method
+			therefore child class overrides the method
+
+
+
+
+
+
+
+
+
+
+
+	
+		

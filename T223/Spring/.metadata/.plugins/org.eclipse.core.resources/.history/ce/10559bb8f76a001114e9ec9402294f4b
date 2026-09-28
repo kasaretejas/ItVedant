@@ -1,0 +1,45 @@
+package com.tejas.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.tejas.entities.Customer;
+import com.tejas.entities.Product;
+import com.tejas.repositories.CartRepository;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.ProductRepository;
+import com.tejas.response_wrapper.UniversalResponse;
+
+@Service
+public class CartService {
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	UniversalResponse response;
+	
+//	public ResponseEntity<?> addToCart(Customer customer, Product product)
+//	{
+//		
+//	}
+	
+	
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+In java, static can be a variable, method and inner class
+We can not declare outer class as static class
+
+static class Demo     --------> NOT ALLOWED (outer class)
+{}    
+
+
+class Demo
+{
+	static class Test {} -----> ALLOWED (inner class)
+} 
+
+1. if variable is static then its value is shared among all objects
+   we can call static variables directly by using class name
+2. if method is static then it is shared among all objects
+   we can call static method directly by using class name
+   only static members are allowed inside static method
+   we can not override static methods
+3. if inner class is a static class then to create its object we are not required object of outer class
+	we can not create outer class as a static class.
+	we can create outer class as a  public, abstract & final
+	EX :
+		static class College {} -------> Not Allowed
+		abstract class College {} -----> Allowed
+		final class College {} --------> Allowed
+		public class College {} -------> Allowed
+		
+	inner class : non-static class inside a class
+	nested class : static class inside a class
+
+
+
+
+
+
+
+
+
+
+
+

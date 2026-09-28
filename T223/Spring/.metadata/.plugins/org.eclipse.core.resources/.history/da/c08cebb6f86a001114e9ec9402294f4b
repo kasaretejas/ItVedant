@@ -1,0 +1,21 @@
+package com.tejas.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.tejas.entities.Cart;
+import com.tejas.entities.Customer;
+import com.tejas.entities.Product;
+
+@Repository
+public interface CartRepository extends JpaRepository<Cart, Long>{
+	
+	//check if particular product is already exists in cart
+	boolean existsByCustomerAndProduct(Customer customer, Product product);
+	
+	//get cart items for particular customer
+	List<Cart> findByCustomerId(Long customerId);
+
+}

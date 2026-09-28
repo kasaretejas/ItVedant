@@ -1,0 +1,33 @@
+package _1_Loops;
+
+public class ForLoopUnderstanding {
+
+	public static void main(String[] args)
+	{
+		// display 4 to 9 numbers vertically
+		for(int i=4; i<=9; i++)
+		{
+			System.out.println(i);
+		}
+		
+		// display 4 to 9 numbers horizontally
+		for(int i=4; i<=9; i++)
+		{
+			System.out.print(i + " ");
+		}
+		System.out.println();
+		
+		
+		// display 9 to 4 numbers horizontally
+		for(int i=9; i>=4; i--)
+		{
+			System.out.print(i + " ");
+		}
+		System.out.println();
+		
+		//display A, a using type casting
+		System.out.println((char)65);
+		
+	}
+
+}

@@ -1,0 +1,25 @@
+interface :
+	in java interface is used to achieve 100% abstraction. means, interface 
+	can have only abstract methods.
+	
+	the nature of methods in interface is public and abstract
+	
+	interface can also have variables.
+	the nature of variable is public static final
+	
+	after java 8, interface can have default and static methods
+	
+	there are 2 types of interface
+		1. functional interface
+			an interface who have only one abstract method
+			functional interface can have multiple default or static methods
+			functional interface is denoted by @FunctionalInterface annotation
+			ex : Runnable (has only one abstract method -run())
+		2. marker interface
+			marker interface has zero methods.
+			implemetation is given by JVM
+			ex : Serializable 
+			
+			
+			
+	

@@ -1,0 +1,15 @@
+first include mysql connector in your project
+
+select * from employee;   ----> SQL
+"select * from employee;" ----> String for Java
+
+task 1 : convert above java string into SQL
+	a. find what type of your SQL query is (DML or DQL)
+	b. if query is DQL then use ---> createStatement()
+	c. if query is DML then use ---> preparedStatement()
+
+task 2 : execute above queries
+	a. if query is generated using createStatement() then execute it using executeQuery()
+	a. if query is generated using preparedStatement() then execute it using executeUpdate()
+	
+above createStatement() and preparedStatement() methods are present inside Connection class!

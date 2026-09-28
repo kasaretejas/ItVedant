@@ -1,0 +1,49 @@
+problem Statement :
+	to access members of one class into another
+	
+Solution:
+	to access members of one class to another, those classes must be in relationship
+	that relationship can be a HAS-A relationship or IS-A relationship
+	
+	let example , there are 3 classes : Demo, Check and Sample
+	and we want to access members of Demo into Check and Sample
+	
+	way 1: HAS-A relationship
+		   - creating object of Demo class into Check class. so we can say
+		   - class Check HAS-A object of class Demo
+		   - here, accessibility is based on requirements
+		   
+	way 2: IS-A relationship
+		   - here we make class Demo as a parent class to Sample class by using keyword "extends"
+		   - class Sample extends Demo {}
+		   - class Demo IS-A parent of class Sample       OR
+		   - class Sample IS-S child of class Demo
+		   -  here, class Sample can access all members of Demo without creating object of Demo
+		   - this IS-A relationship is also called as : INHERITANCE!
+		   
+What is inheritance??
+	inheritance is process of accessing one class members into another by
+	making parent child relationship between them.
+	
+Types of inheritance :
+	1. single 
+		A ---> B
+	2. multilevel
+		X ---> Y ---> z
+	3. multiple
+		P1     P2
+		 |	   |
+		 |--C--|
+	4. hierarchical 
+		|---P---|
+		|       |
+		C1     C2				
+	5. hybrid
+		R ---> S ---> T
+		|
+		U
+		   
+		   
+		   
+		   
+		   

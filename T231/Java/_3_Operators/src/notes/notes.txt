@@ -1,0 +1,20 @@
+operators :
+	1. are symbols we used to perform operaton on data
+	
+following operators available in java
+	1. arithmatic
+		+,-,*,/,%
+		
+	2. assignment
+		=, +=,-=.....
+		
+	3. comparision
+		>,<,>=,<=,!=,==	
+		
+	4. logical
+		&&, ??, !
+	5. ternary
+		?:
+	6. unary
+		++,--
+	

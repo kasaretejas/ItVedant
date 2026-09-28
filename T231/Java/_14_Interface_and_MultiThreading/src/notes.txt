@@ -1,0 +1,57 @@
+abstract class : 
+	the class who have abstract methods
+abstract method :
+	method without body/implementation
+
+why we need method without body :
+	when we know that method exists but dont know its implemenattion (Vehicle : wheel)
+	
+Abstract class can have abstract or NON-ABSTRACT(CONCRETE) method
+therefore we can say that abstrarct class doesnt have 100% abstraction
+
+what if we want 100% abstraction (ONLY ABSTRACT METHODS)?-------> Interface
+
+Interface : 
+	interface has only abstrarct methods
+	therefore we can achieve 100% abstraction using interface. BUT
+	
+	from java 8, intreface can have default and static methods
+	interface also contains variables.
+	
+Nature of Interface's methods and variable
+	1. the methods of intreface are by default ---> public and abctract
+	   we dont have to use keywords like public or abstrct
+	   
+	   void show();     ---------------> declared by us
+	   public abstarct void show() ----> treated by java
+	   
+	2. the variables inside interface are by default ----> public static final
+		
+		int age = 10; ---------------------> declared by us
+		public static final int age=10; ---> treated by java
+		
+	3. for default methods in interface we have to use keyword "default"
+
+		void display(); -----------> will be treated as abstract method
+		default void display() {} -> for default method
+	
+types of interface
+	1. functional interface :
+		the interface with exactly one abstract method
+		it can have multiple defualt/static method
+		to show functional interface we have to use annotation - @FunctionalInterface
+		if you did not use @FunctionalInterface annotation then that interface will not be treated as functional interface
+		Ex - Runnable Interface (Predefined in java)
+	2. marker interface
+		the interface with zero abstract method
+		it can have multiple defualt/static method
+		Ex - Seralizable Interface (Predefined in java)
+	
+	
+	
+	
+	
+	
+	
+	
+	

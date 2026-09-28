@@ -1,0 +1,4 @@
+INDEX VERSION 1.132+C:\Tejas Kasare Sir\T229\Java\.metadata\.plugins\org.eclipse.jdt.core
+1267002994.index
+3413725848.index
+1865797976.index

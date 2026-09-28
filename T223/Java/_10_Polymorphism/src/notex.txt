@@ -1,0 +1,56 @@
+Polymorphism :
+	when class members shows different behavior on different places
+	is called as polymorphism
+	
+	ex : 
+		1+2 = 3   ============> + behaves as addition
+		"hi"+"bye" = hibye ===> + behaves as concatination
+		
+there are 2 types of polymorphism:
+	- compile time polymorphism (method overloading)
+		- method overloading means, when one class has multiple methods with same name
+		- in one class, all method names must be unique (method with same name NOT ALLOWED)
+		- still we can create multiple methods with same name by changing method definition
+		HOW?
+				1. make their number of parameters different
+					void hello(int n1, int n2) {}
+					void hello(int n1, int n2, int n3) {}
+				2. if number of parameters are same, then change their data types
+					void display(int n1, int n2) {}
+					void display(int n1, float n2) {}
+		WHY?
+			class Database
+			{
+				String connect(dbname, username, passowrd) {}
+				
+				String connect(dbname) {}
+			}
+			above connect method will call based on what arguments(data) you are passing
+	- runtime polymorphism (method overriding)
+		- when child class re-implements parent class's method, is called as method overriding
+		- while overriding method in child class, we have to use @Override annotation
+		- why child class overrides parent class's method?
+			1. when method is partially implemented in parent class
+			2. child class is not satisfied with parent's implementation
+		- if child still wants to call its parents method then we have to use super keyword
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

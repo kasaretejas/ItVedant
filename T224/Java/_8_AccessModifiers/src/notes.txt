@@ -1,0 +1,29 @@
+Access Modifier :
+	Access : accessibility of class members to other class
+	whether members of one class are accessible in another class
+	in java there are 4 access modifiers - 
+		public, protected, default and private
+	accessibility area:
+		inside a class
+		outside a class but in same package
+		outside a class but in different package
+		outside a class but in different package (using inheritance)
+
+			    inside a class     outside a class but     outside a class but          outside a class but 
+			    			         in same package	     in diff package         in diff package (but inheritance)
+			    			       
+			    
+public                YES                YES                      YES                           YES
+
+protected		      YES                YES                       NO                           YES
+
+default				  YES                YES                       NO                            NO
+
+private				  YES                 NO                       NO                            NO
+
+
+
+
+
+
+

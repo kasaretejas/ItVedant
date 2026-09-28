@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>COMPONENT IN REACT</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            let root = document.getElementById("root")
+
+            function Display() //here Display is component and component name must be start with Capital
+            {
+                return <h1>Hello REACT </h1>;
+            }
+
+            let myRoot=ReactDOM.createRoot(root)
+            myRoot.render(<Display/>) //rendering component
+        </script>
+    </body>
+    
+</html>

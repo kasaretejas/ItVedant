@@ -1,0 +1,84 @@
+class
+	class is a plan/blueprint consist of variable, method or another class
+	ex : 2D drawing of a drone
+	
+object
+	physical existence of class.
+	ex : actual real drone
+	
+reference variable
+	used to access attributes(variables) and behaviors(methods) of an object.
+	ex: remote of drone
+
+method
+	block of code that executes only when we call it
+	like function in javascript
+
+type of variables:
+	instance variable
+		the variable whos value is changing from object to object
+		EX : name of a student (for each student the name is different)
+	static variable
+		the variable whos value is same for all objects
+		EX : institute name (for each student,  the institute name is same)
+	local variable
+		the variable defined inside a method for general purpose.
+		we cant access these variables outside the method
+	reference variable
+		discussed above
+	final variable:
+		the variable whos value is fixed (can not be changed)
+		ex : gravitational constant, pi
+type of methods:
+	instance method
+		to work with instance variable, we use instance method
+		we can access static variables and static methods in instance method
+	static method
+		has static keyword in method defination
+		used to work with ONLY static members of the class
+NOTE : static members (static variable, static method) of class should be access using class name
+	local method
+		for general purpose
+	constructor
+		- is a method, used to initialize instance variable
+		- constructor does not have return type
+		- constructor has same name as class name
+		- since constructor is a method, it will get executes automatically when object is created
+	final method
+	abstract method
+	
+--------------------------------------------------------------------------------
+access modifiers :
+		provides rules/restrictions on upto where we can access members of a class
+		there are 4 access modifiers - public, protected, default and private
+		
+				inside class		inside package		outside package
+
+public				YES					YES					  YES
+
+protected  			YES					YES				ONLY BY INHERITANCE
+
+default				YES					YES						NO
+
+private				YES					NO						NO
+		
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

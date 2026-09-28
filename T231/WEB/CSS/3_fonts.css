@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "myfont";
+    src: url("/fonts/myfont.otf");
+}
+
+h1
+{
+    color: brown;
+    font-family: "myfont";
+}

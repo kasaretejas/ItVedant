@@ -1,0 +1,71 @@
+package com.tejas.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.tejas.entities.Customer;
+import com.tejas.entities.User;
+import com.tejas.entities.Vendor;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.UserRepository;
+import com.tejas.repositories.VendorRepository;
+import com.tejas.response_wrapper.CustomResponse;
+import com.tejas.response_wrapper.Response;
+
+@Service
+public class UserService 
+{
+	@Autowired
+	Response response;
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	CustomerRepository customerRepository;
+	@Autowired
+	VendorRepository vendorRepository;
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	public ResponseEntity<CustomResponse>  register(User user)
+	{
+		if(userRepository.existsByUsername(user.getUsername()))
+		{
+			return response.send("Username already exists", null, HttpStatus.FOUND);
+		}
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		User savedUser=userRepository.save(user);
+		
+		String role=user.getRole().name();
+		if(role.equals("CUSTOMER"))
+		{
+			Customer customer = new Customer();
+			customer.setUser(savedUser); //adding FK of user into customer
+			Customer savedCustomer=customerRepository.save(customer);
+			return response.send("Customer Registered", savedCustomer, HttpStatus.OK);
+			
+		}
+		else
+		{
+			Vendor vendor = new Vendor();
+			vendor.setUser(savedUser); //adding FK of user into vendor
+			Vendor savedVendor=vendorRepository.save(vendor);
+			return response.send("Vendor Registered", savedVendor, HttpStatus.OK);
+		}
+		
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

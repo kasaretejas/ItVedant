@@ -1,0 +1,21 @@
+/* direct child  */
+div > h1
+{
+    color: blue;
+}
+/* indirect child  */
+div> section > h1
+{
+    color: red;
+}
+/* adjecent child  */
+div+h1
+{
+    color: chartreuse;
+}
+/* general child  */
+div~h1
+{
+    background-color: pink;
+    color: darkorange;
+}

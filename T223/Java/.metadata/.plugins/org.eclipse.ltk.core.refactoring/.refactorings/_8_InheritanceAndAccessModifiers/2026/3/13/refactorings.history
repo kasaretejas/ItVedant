@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;package_1.Parent&apos; to &apos;Main&apos;&#x0D;&#x0A;- Original project: &apos;_8_Inheritance&apos;&#x0D;&#x0A;- Original element: &apos;package_1.Parent&apos;&#x0D;&#x0A;- Renamed element: &apos;package_1.Main&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Parent&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;package_1{Parent.java[Parent" matchStrategy="1" name="Main" qualified="false" references="true" similarDeclarations="false" stamp="1774428486273" textual="false" version="1.0"/>
+</session>

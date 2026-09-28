@@ -1,0 +1,15 @@
+if we want to fetch data from API/url, we have to use fetch() build in 
+function in JS
+
+1. we have to pass our API/URL to fetch() function
+2. fetch() function will not direclty gives a data, instead it returns 
+   promise/response
+3. we have to convert that  into json (JS object) using one JS built in
+   function  - json()
+4. if we get valid data, then only our json() function is able to convert 
+   that response into a data otherwise we will get error
+
+
+
+fetch() either gives us response or error (if API/URL is wrong)
+json() either converts given response into data or error (if data is not convertable)

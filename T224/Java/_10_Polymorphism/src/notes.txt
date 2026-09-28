@@ -1,0 +1,66 @@
+polymorphism :
+	one entity showing different behavior on different places
+	poly --> many
+	morph --> forms
+	
+Scenario :
+	let there is class A has method display(). This class A is inherited
+	by class B. 
+	
+	Now, class B found that, display() method in class A has partial/half/incomplete
+	implementation. so class B wants to re implement display() method inside class B.
+	
+	Thus,we can say class B "overrides" display() method from class A.
+	
+	Above process is called as - "method overriding"
+	
+	here, display() method in class A has different behavior than display() method in class B
+	this is "Polymorhism"
+	
+polymorphism of operator
+	10+5 = 15 ------------> addition
+	"hi+"bye" = hibye ----> concatination
+	+ operator changes its behavior according to datatype
+
+Types of polymorphism:
+	1. compile time ----> method overloading ----> early binding
+	2. runtime  --------> method overriding -----> late binding
+
+What is method overriding
+	when parent class has a method which child thinks it is partially implemented,
+	then child class re implements that method. this process is called method
+	overriding
+	simply, child class overrides parent class method(s)
+	
+	when we create child class's object, at runtime it is going to decide from
+	where to call that method (from child or parent). therefor it is also called as
+	late binding. 
+	
+		
+What is method overloading
+	when a class has multiple methods with same name but different 
+	method signature
+	
+	add(int x, int y)             				add(int x, int y)
+	add(int x, float y)           				add(int a, int b, int c)
+			|												|				
+	same no of parameters                       different no of parametrs
+	but different datatypes                      but same datatypes
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

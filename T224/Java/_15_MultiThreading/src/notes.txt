@@ -1,0 +1,19 @@
+already shared on board
+
+Thread life cycle :
+	new 
+	|
+	runnable --->start() waiting for resource/memory
+	|
+	running----> run() method executing
+	|
+	block/waiting/sleep
+	|
+	block:synchronized
+	waiting:wait()
+	sleep:sleep(milliseconds)
+	|
+	runnable ---> running
+					|
+					terminated
+	

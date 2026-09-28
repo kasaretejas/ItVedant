@@ -1,0 +1,38 @@
+Interface
+	In java interface is used to achieve 100% abstraction
+	Methods in interface are by default public and abstract
+	We can't create object of interface. 
+	Since we can't create object of interface, interface doesn't have constructor
+	After java 8 interface can have default and static methods
+	Interface can have variables those variables are by-default public static and final
+	We required interface for loose coupling
+	Multiple Inheritance is possible because of Interface i.e. one class can implement multiple interface
+
+Types of Interface
+	Functional Interface
+		The interface who have only one abstract method
+		Functional interface can have default and static method
+		To show functional interface we have to use annotation @FunctionalInterface
+
+	Marker  Interface
+		The interface who have 0 abstract method
+		To show marker interface we have to use annotation @MarkerInterface
+
+Why we need default method in Interface?
+
+
+
+Why we need static method in Interface?
+
+
+
+
+
+
+
+
+
+
+
+
+

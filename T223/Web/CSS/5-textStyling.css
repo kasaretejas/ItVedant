@@ -1,0 +1,48 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+#font-styling
+{
+    font-family: Georgia;
+    font-size: 100px;
+    font-weight: bold;
+    font-style: italic;
+    font-variant: small-caps;
+
+    color: coral;
+    background-color:  blueviolet;
+
+    /* something extra  comment above 2 lines to see below 3 line effect*/
+    /* background: linear-gradient(rgb(214, 119, 119), rgb(115, 115, 218));
+    -webkit-background-clip: text;
+    color: transparent; */
+
+    text-align: center;
+    /* text-decoration: underline wavy 4px white;
+    text-underline-offset: 10px; */
+
+    -webkit-text-stroke: 1px white;
+    text-shadow: 5px 3px 5px black;
+
+}
+
+#box1
+{
+    height: 150px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 3px 7px grey;
+}
+
+#p-in-box1
+{
+    text-indent: 50px;
+    /* text-align: justify; */
+    line-height: 25px;
+    word-spacing: 2px;
+    user-select: none;
+}

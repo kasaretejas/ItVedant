@@ -1,0 +1,10 @@
+#root > img
+{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: block;
+    margin: 20px;
+    box-shadow: 5px 3px 7px grey;
+}

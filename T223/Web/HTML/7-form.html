@@ -1,0 +1,89 @@
+<html>
+    <head>
+       <title>Form</title> 
+    </head>
+    <body>
+        <form>
+            <h1>Text Inputs</h1>
+            <label for="username">Enter Your Name :</label>
+            <input type="text" id="username" name="username">
+             <!-- for and id attributes are used to establised connection between label and input tag  -->
+             <!-- name attribute used as variable to store data entred by user     -->
+                <br><br>
+            <label for="age">Enter Your Age:</label>
+            <input type="number" id="age" name="age">
+                <br><br>
+            <label for="email">Enter Your Email:</label>
+            <input type="email" id="email" name="email">
+                <br><br>
+            <label for="password">Enter Your Password:</label>
+            <input type="password" id="password" name="password">
+                <br><br>
+
+            <h1>Choices</h1>
+
+            <label for="gender">Select Gender</label>
+            <input type="radio" name="gender" id="gender" value="male"> Male
+            <input type="radio" name="gender" id="gender" value="female"> Female
+            <br><br> 
+            
+            <label for="subject">Select Subjects</label>
+            <input type="checkbox" name="subject" id="subject" value="html"> HTML
+            <input type="checkbox" name="subject" id="subject" value="css"> CSS
+            <br><br> 
+            
+            <label for="course">Select Course</label>
+            <select name="course" id="course">
+                <option value="" selected>Click to select</option>
+                <option value="fsj">Full Stack Java</option>
+                <option value="fsp">Full Stack Python</option>
+                <option value="ds">Data Science</option>
+            </select>
+            <br><br>
+
+            <label for="cerificates">Select Certficates</label>
+            <select name="cerificates" id="cerificates" multiple size="3">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JAVASCRIPT</option>
+            </select>
+            <br><br>
+            <!-- data and time  -->
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob">
+            <br><br>
+
+            <label for="tob">Time of Birth</label>
+            <input type="time" name="tob" id="tob">
+            <br><br>
+
+            <label for="pit">Punch in time</label>
+            <input type="datetime-local" name="pit" id="pit">
+            <br><br>
+
+            <!-- range  -->
+            <label for="range">Range (1-100)</label>
+            <input type="range" name="range" id="range" min="1" max="100" value="50">
+            <br><br>
+
+            <!-- file  -->
+            <label for="pic">Profile Pic</label>
+            <input type="file" name="pic" id="pic">
+            <br><br>
+
+            <!-- textarea  -->
+             <label for="review">Review</label>
+             <textarea name="review" id="review" rows="5" cols="50"></textarea>
+             <br><br>
+
+            <input type="submit">
+        </form>
+    </body>
+</html>
+
+
+
+
+
+
+

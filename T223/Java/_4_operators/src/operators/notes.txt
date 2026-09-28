@@ -1,0 +1,15 @@
+operators : are the symbols that we use to perform operations on data
+	1. arithmatic
+		+,-,*,/,%
+	2. assignment
+		=, +=, -= .....
+	3. comparison
+		>,<,>=,<=,!=, ==
+	4. logical
+		&&, ||, !
+	5. unary
+		++, --
+	6. ternary
+		?:
+	7. bitwise
+		&,|, ^, <<, >>

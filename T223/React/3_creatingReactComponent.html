@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>React Component</title>
+    </head>
+    <body>
+       <div id="root"></div> 
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script>
+            let root=document.getElementById("root") //actual dom
+            function Display()
+            {
+                return React.createElement("p", null, "This p tag is inside Display Component")
+            }
+            let reactRoot=ReactDOM.createRoot(root)
+            reactRoot.render(React.createElement(Display))
+
+        </script>
+    </body>
+</html>

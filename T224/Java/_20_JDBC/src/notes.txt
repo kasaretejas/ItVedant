@@ -1,0 +1,11 @@
+in java, we write SQL queries in String format.
+like 
+	String query = "select * from employee;";
+
+task 1: convert java string to respective SQL query
+		if query is DQL then use createStatement() method
+		if query is DML then use preparedStatement() method
+		
+task 2: execute above query created using either createStatement() or preparedStatement()
+		if query is created using  createStatement() method --> executeQuery() method
+		if query is created using  preparedStatement() method --> executeUpdate() method

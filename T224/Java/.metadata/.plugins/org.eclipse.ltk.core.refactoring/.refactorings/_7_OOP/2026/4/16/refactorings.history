@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;basics.ClassObjectReferenceVariable&apos; to &apos;_1_ClassObjectReferenceVariable&apos;&#x0D;&#x0A;- Original project: &apos;_7_OOP&apos;&#x0D;&#x0A;- Original element: &apos;basics.ClassObjectReferenceVariable&apos;&#x0D;&#x0A;- Renamed element: &apos;basics._1_ClassObjectReferenceVariable&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ClassObjectReferenceVariable&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;basics{ClassObjectReferenceVariable.java[ClassObjectReferenceVariable" matchStrategy="1" name="_1_ClassObjectReferenceVariable" qualified="false" references="true" similarDeclarations="false" stamp="1776084364012" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+flow control :
+	managing execution of a code/program
+
+flow control has following  statements
+	conditional statements
+		when execution of action is depends on some condition
+		if, else if, else
+	looping statements
+		when we want to execute some action for given no of iteration
+		for, while, do while
+		for : when we know number  of iterations
+		while : when we dont know number  of iterations
+	transfer statements
+		when we want to send control to next iteration or out of the loop
+		break,continue
+		break : used to terminate loop based on condition
+		continue : used to skip current iteration 
+	switch statement
+		execution is depends on selection

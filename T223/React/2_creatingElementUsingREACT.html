@@ -1,0 +1,22 @@
+<!-- create div in html and add h1 inside it using REACT -->
+
+<html>
+    <head>
+        <title>Element using React</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+        <script>
+            let root = document.getElementById("root")
+            let h1 = React.createElement("h1",null,"This h1 created using React")
+            //ReactDOM.render(h1, root)
+            let reactRoot=ReactDOM.createRoot(root)  //it creates virtual root
+            reactRoot.render(h1)
+        </script>
+
+    </body>
+</html>

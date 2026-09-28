@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.tejas.services.CartSerives&apos; to &apos;CartService&apos;&#x0D;&#x0A;- Original project: &apos;Go-Grocery&apos;&#x0D;&#x0A;- Original element: &apos;com.tejas.services.CartSerives&apos;&#x0D;&#x0A;- Renamed element: &apos;com.tejas.services.CartService&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CartSerives&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.tejas.services{CartSerives.java[CartSerives" matchStrategy="1" name="CartService" qualified="false" references="true" similarDeclarations="false" stamp="1790071492590" textual="false" version="1.0"/>
+</session>

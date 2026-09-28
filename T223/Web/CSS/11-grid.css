@@ -1,0 +1,47 @@
+.container {
+background-color: aquamarine;
+display: grid;
+grid-template-columns: auto auto;
+grid-template-columns: auto auto auto;
+grid-template-columns: 25% 75%;
+grid-template-columns: 25% 50% 25%;
+}
+
+.container>div
+{
+    font-size: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.container-grid-item
+{
+    margin-top: 50px;
+    background-color: pink;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+}
+
+.container-grid-item>div
+{
+    font-size: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.container-grid-item>.item-1
+{
+    /* grid-area: 1/1/span 2/ span 3; */
+    /* start from row 1, column 1, spread across 2 rows and 3 columns  */
+
+    /* grid-area: 2/2/span 2/ span 3; */
+    /* start from row 2, column 2, spread across 2 rows and 3 columns  */
+}
+
+.container-grid-item>.item-2
+{
+    grid-area: 1/2/span 2/ span 2;
+}
