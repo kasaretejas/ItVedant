@@ -54,7 +54,6 @@ export default function ManageCategories() {
             let responseObject=await response.json()
              
             setCategories(responseObject.data)  
-
     }
 
     useEffect(()=>{

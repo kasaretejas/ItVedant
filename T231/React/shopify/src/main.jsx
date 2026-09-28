@@ -11,6 +11,7 @@ import { Bounce, ToastContainer } from 'react-toastify'
 import LoggedInUserProvider from './project_context/LoggedInUserContext.jsx'
 import VendorDashboard from './vendor_components/VendorDashboard.jsx'
 import ManageCategories from './vendor_components/ManageCategories.jsx'
+import ManageSubCategories from './vendor_components/ManageSubCategories.jsx'
 
 const projectRouts=createBrowserRouter([
   {
@@ -26,7 +27,8 @@ const projectRouts=createBrowserRouter([
     path:"/vendor",
     element:<VendorDashboard/>,
     children:[
-      { path:"/vendor/manage-categories", element:<ManageCategories/>}
+      { path:"/vendor/manage-categories", element:<ManageCategories/>},
+      { path:"/vendor/manage-sub-categories", element:<ManageSubCategories/>}
     ]
   }
 ])

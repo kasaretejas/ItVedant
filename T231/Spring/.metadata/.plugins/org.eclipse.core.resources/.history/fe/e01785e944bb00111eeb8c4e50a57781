@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.tejas.entities.SubCategory;
 
 @Repository
-public interface SubCategoryRepository extends JpaRepository<SubCategory, Long>
-{
-	boolean existsByNameAndCategoryId(String subCategoryName, long categoryId);
+public interface SubCategoryRepository extends JpaRepository<SubCategory, Long>{
+
 }
