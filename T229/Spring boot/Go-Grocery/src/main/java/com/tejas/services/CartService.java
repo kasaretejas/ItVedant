@@ -81,6 +81,28 @@ public class CartService {
 		}
 		
 	}
+
+	public ResponseEntity<CustomResponse> deleteCartItem(long cartId)
+	{
+		try
+		{
+			cartRepository.deleteById(cartId);
+			return response.send("Item Deleted",null,HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return response.send("Item Deletion failed",null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	public ResponseEntity<CustomResponse> changeCartQuantity(long cartId, int quantity)
+	{
+		Cart existingCart=cartRepository.findById(cartId).get();
+		existingCart.setQuantity(quantity);
+		cartRepository.save(existingCart);
+		return response.send("Quantity updated",null,HttpStatus.OK);
+		
+	}
 }
 
 
