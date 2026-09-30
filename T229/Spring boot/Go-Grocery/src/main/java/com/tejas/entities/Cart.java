@@ -28,6 +28,6 @@ public class Cart {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Product product;
 	
-	private long quantity;
+	private int quantity;
 
 }

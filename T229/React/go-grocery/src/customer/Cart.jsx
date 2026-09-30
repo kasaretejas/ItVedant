@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 export default function Cart() 
@@ -75,6 +75,159 @@ export default function Cart()
   //total sum of products in the cart
   let totalSum = cartItems?cartItems.reduce((sum, cartItem) => {return sum + (cartItem.product.price*cartItem.quantity)}, 0) :0
   
+  //razzorpay code
+  function loadRazorpayScript() 
+  {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+
+    script.onload = () => {
+      resolve(true);
+    };
+
+
+    script.onerror = () => {
+      resolve(false);
+    };
+
+
+    document.body.appendChild(script);
+  });
+}
+
+//handle payment
+const navigate=useNavigate()
+async function handlePayment() {
+  // Load Razorpay SDK
+  const isLoaded = await loadRazorpayScript();
+
+
+  if (!isLoaded) {
+    toast.error("Razorpay SDK failed to load");
+    return;
+  }
+
+
+  // Create order from Spring Boot
+  console.log(`http://localhost:8080/api/v1/customer/create-order?amount=${totalSum}&currency=INR&customerId=${loggedInUser.id}`);
+ 
+  const createOrderResponse = await fetch(
+    `http://localhost:8080/api/v1/customer/create-order?amount=${totalSum}&currency=INR&customerId=${loggedInUser.id}`,
+    {
+      method: "POST",
+     headers:{Authorization:`Bearer ${loggedInUser.jwtToken}`}
+    }
+  );
+
+
+  const order = await createOrderResponse.json();
+console.log("order");
+console.log(order);
+
+
+
+
+ 
+
+
+  if (!createOrderResponse.ok) {
+    toast.error("Unable to create order");
+    return;
+  }
+
+
+  const options = {
+    key: "rzp_test_TiD1BAW7x4d2v2", // Your Key ID
+
+
+    amount: totalSum*100,
+    currency: order.currency,
+    order_id: order.id,
+
+
+    name: "Go-Grocery",
+
+
+    description: "Order Payment",
+
+
+    handler: async function (paymentResponse) {
+
+
+      console.log("paymentResponse");
+      console.log(paymentResponse);
+
+
+      //toast.success("Payment Successful");
+
+
+      console.log("Payment Id :", paymentResponse.razorpay_payment_id);
+      console.log("Order Id :", paymentResponse.razorpay_order_id);
+      console.log("Signature :", paymentResponse.razorpay_signature);
+
+
+      // Optional:
+      // Send payment details to Spring Boot for signature verification
+      const verifyResponse = await fetch(
+        "http://localhost:8080/api/v1/customer/verify-payment",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization:`Bearer ${loggedInUser.jwtToken}`},
+            
+            body: JSON.stringify({
+                razorpayOrderId: paymentResponse.razorpay_order_id,
+                razorpayPaymentId: paymentResponse.razorpay_payment_id,
+                razorpaySignature: paymentResponse.razorpay_signature,
+                customerId: loggedInUser.id
+            })
+        });
+
+
+    if(verifyResponse.ok){
+        toast.success("Payment Successful");
+        navigate("/my-orders"); //const navigate=useNavigate() import above
+
+
+    }
+    else{
+        toast.error("Payment Verification Failed");
+    }
+    },
+
+
+    prefill: {
+      name: loggedInUser.name,
+      email: loggedInUser.email,
+      contact: loggedInUser.mobile
+    },
+
+
+    theme: {
+      color: "#F37254"
+    }
+  };
+
+
+  const razorpay = new window.Razorpay(options);
+
+
+  razorpay.on("payment.failed", function (response) {
+
+
+    toast.error("Payment Failed");
+
+
+    console.log(response.error);
+  });
+
+
+  razorpay.open();
+}
+
   return (
     <div className='container'>
       <h1>In Your Cart</h1> <span>{totalCartItems} Items</span>
@@ -116,7 +269,7 @@ export default function Cart()
         <div className='col-5  text-center mt-auto mb-auto'>
           
               <h3>Total = ₹ {totalSum}</h3>
-              <button className='btn btn-warning w-75'>Pay Now</button>
+              <button className='btn btn-warning w-75' onClick={handlePayment}>Pay Now</button>
          
             
         </div>

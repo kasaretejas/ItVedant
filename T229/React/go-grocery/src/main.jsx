@@ -17,6 +17,7 @@ import FetchMyProducts from './vendor/FetchMyProducts.jsx'
 import UpdateProduct from './vendor/UpdateProduct.jsx'
 import Cart from './customer/Cart.jsx'
 import FetchCustomerProducts from './customer/FetchCustomerProducts.jsx'
+import Orders from './customer/Orders.jsx'
 
 const myRoutes=createBrowserRouter(
   [
@@ -28,7 +29,8 @@ const myRoutes=createBrowserRouter(
         {index:true, element:<FetchCustomerProducts/>},
         { path:"/login", element:<Login/> },
         { path:"/register", element : <Register/> },
-        { path:"/my-cart", element : <Cart/> }
+        { path:"/my-cart", element : <Cart/> },
+        { path:"/my-orders", element : <Orders/> }
       ]  
     },
     {
