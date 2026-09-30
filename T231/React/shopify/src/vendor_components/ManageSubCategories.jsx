@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { LoggedInUserContext } from '../project_context/LoggedInUserContext';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export default function ManageSubCategories() {
     //posting new sub category
@@ -124,7 +125,7 @@ export default function ManageSubCategories() {
                                     }
                                 </td>
                                 <td className='text-capitalize'>
-                                    <button className='btn btn-warning'>Add Product</button>
+                                    <Link className='btn btn-warning' to={"/vendor/add-product"}>Add Product</Link>
                                 </td>
                                 
                             </tr>

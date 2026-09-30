@@ -2,6 +2,7 @@ package com.tejas.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -32,6 +33,7 @@ public class SubCategory {
 	private Category category;
 
 	@OneToMany(mappedBy = "subCategory")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Product> products;
 }
 

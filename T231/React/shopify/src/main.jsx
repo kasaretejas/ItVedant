@@ -12,6 +12,8 @@ import LoggedInUserProvider from './project_context/LoggedInUserContext.jsx'
 import VendorDashboard from './vendor_components/VendorDashboard.jsx'
 import ManageCategories from './vendor_components/ManageCategories.jsx'
 import ManageSubCategories from './vendor_components/ManageSubCategories.jsx'
+import AddProduct from './vendor_components/AddProduct.jsx'
+import DisplayProducts from './vendor_components/DisplayProducts.jsx'
 
 const projectRouts=createBrowserRouter([
   {
@@ -28,7 +30,9 @@ const projectRouts=createBrowserRouter([
     element:<VendorDashboard/>,
     children:[
       { path:"/vendor/manage-categories", element:<ManageCategories/>},
-      { path:"/vendor/manage-sub-categories", element:<ManageSubCategories/>}
+      { path:"/vendor/manage-sub-categories", element:<ManageSubCategories/>},
+      { path:"/vendor/add-product", element:<AddProduct/>},
+      { index:true, element:<DisplayProducts/>}
     ]
   }
 ])
