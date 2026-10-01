@@ -7,9 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +35,6 @@ public class Product {
 
 	@ManyToOne
 	@JoinColumn(name="vendor_id")
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Vendor vendor;
 	
 	@OneToMany(mappedBy = "product")

@@ -137,7 +137,7 @@ export default function ManageSubCategories() {
                 
             </tbody>
         </table>
-      </div> 
+    </div> 
     </div>
   )
 }

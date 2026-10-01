@@ -31,7 +31,7 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/vendor/products/{vendorId}")
+	@GetMapping("/get/products/{vendorId}")
 	public ResponseEntity<CustomResponse> getAllProductsByVendorId(@PathVariable("vendorId") long vendorId)
 	{
 		return productService.getAllProductsByVendorId(vendorId);

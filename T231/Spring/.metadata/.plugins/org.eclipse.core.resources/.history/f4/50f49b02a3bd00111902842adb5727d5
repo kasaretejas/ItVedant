@@ -71,7 +71,9 @@ public class ProductService {
 	
 	public ResponseEntity<CustomResponse> getAllProductsByVendorId(long vendorId)
 	{
-		List<Product> products=productRepository.findAllByVendorId(vendorId);
+		//List<Product> products=productRepository.findAllByVendorId(vendorId);
+		List<Product> products=productRepository.findAll();
+		//System.out.println(products);
 		return response.send("Following Products found", products, HttpStatus.OK);
 		
 	}

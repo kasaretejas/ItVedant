@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,14 +66,6 @@ public class ProductService {
 		
 	}
 	
-	
-	
-	public ResponseEntity<CustomResponse> getAllProductsByVendorId(long vendorId)
-	{
-		List<Product> products=productRepository.findAllByVendorId(vendorId);
-		return response.send("Following Products found", products, HttpStatus.OK);
-		
-	}
 }
 
 
