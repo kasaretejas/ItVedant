@@ -28,7 +28,7 @@ export default function VendorNavbar() {
                 <Link className="nav-link active" aria-current="page" to={"/vendor/manage-sub-categories"}>Manage Sub-Categories</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page">Add Product</Link>
+                <Link className="nav-link active" aria-current="page" to={"/vendor/add-product"}>Add Product</Link>
               </li>
             </ul>
             <div>

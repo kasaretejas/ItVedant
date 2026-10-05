@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { LoggedInUserContext } from '../project_context/LoggedInUserContext';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export default function DisplayProducts() {
   let [products, setProducts]=useState(null)
@@ -20,6 +22,28 @@ export default function DisplayProducts() {
           {
             setProducts(responseObject.data)
           }   
+  }
+
+   async function deleteProduct(productId)
+  {
+      let response=await fetch(`http://localhost:8080/api/v1/vendor/products/${productId}`,
+       {
+          method:"delete",
+          headers : 
+               {
+                "Authorization":`Bearer ${userData.jwtToken}`
+               }
+        })         
+        let responseObject=await response.json()
+        if(response.ok)
+          {
+            toast.success(responseObject.message)
+            getAllProductsForVendor()
+          }   
+        else
+          {
+            toast.error(responseObject.message)
+          }
   }
 
   useEffect(()=>{ getAllProductsForVendor() },[])
@@ -53,10 +77,10 @@ export default function DisplayProducts() {
                                 <td>{product.price}</td>
                                 <td>{product.quantity}</td>
                                 <td>
-                                  <button className='btn btn-warning'>Update</button>
+                                  <Link className='btn btn-warning' to={`/vendor/update-product/${product.id}`}>Update</Link>
                                 </td>
                                 <td>
-                                  <button className='btn btn-danger'>Delete</button>
+                                  <button className='btn btn-danger' onClick={()=>{deleteProduct(product.id)}}>Delete</button>
                                 </td>
                               </tr>
                     })

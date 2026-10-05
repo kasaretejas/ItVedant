@@ -14,6 +14,7 @@ import ManageCategories from './vendor_components/ManageCategories.jsx'
 import ManageSubCategories from './vendor_components/ManageSubCategories.jsx'
 import AddProduct from './vendor_components/AddProduct.jsx'
 import DisplayProducts from './vendor_components/DisplayProducts.jsx'
+import UpdateProduct from './vendor_components/UpdateProduct.jsx'
 
 const projectRouts=createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const projectRouts=createBrowserRouter([
       { path:"/vendor/manage-categories", element:<ManageCategories/>},
       { path:"/vendor/manage-sub-categories", element:<ManageSubCategories/>},
       { path:"/vendor/add-product", element:<AddProduct/>},
+      { path:"/vendor/update-product/:productId", element:<UpdateProduct/>},
       { index:true, element:<DisplayProducts/>}
     ]
   }

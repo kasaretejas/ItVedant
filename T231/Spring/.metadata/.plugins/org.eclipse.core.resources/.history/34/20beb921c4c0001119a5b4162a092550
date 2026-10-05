@@ -4,11 +4,9 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -37,31 +35,6 @@ public class ProductController {
 	public ResponseEntity<CustomResponse> getAllProductsByVendorId(@PathVariable("vendorId") long vendorId)
 	{
 		return productService.getAllProductsByVendorId(vendorId);
-	}
-	
-	@DeleteMapping("/vendor/products/{productId}")
-	public ResponseEntity<CustomResponse> deleteProduct(@PathVariable("productId") long productId)
-	{
-		return productService.deleteProduct(productId);
-		
-	}
-	
-	@GetMapping("/vendor/products/{vendorId}/{productId}")
-	public ResponseEntity<CustomResponse> getProductByVendorIdAndProductId(
-			@PathVariable("vendorId") long vendorId, @PathVariable("productId") long productId)
-	{
-		return productService.getProductByVendorIdAndProductId(vendorId, productId);
-	}
-	
-	
-	@PutMapping("/vendor/products/{vendorId}/{productId}")
-	public ResponseEntity<CustomResponse> updateProduct(
-			@PathVariable("vendorId") long vendorId, 
-			@PathVariable("productId") long productId, 
-			@RequestPart("productObject") String productObject, 
-			@RequestParam("productImage") MultipartFile productImage) throws IOException
-	{
-		return productService.updateProduct(vendorId, productId, productObject, productImage);
 	}
 }
 
