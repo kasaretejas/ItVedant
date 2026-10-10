@@ -15,6 +15,7 @@ import ManageSubCategories from './vendor_components/ManageSubCategories.jsx'
 import AddProduct from './vendor_components/AddProduct.jsx'
 import DisplayProducts from './vendor_components/DisplayProducts.jsx'
 import UpdateProduct from './vendor_components/UpdateProduct.jsx'
+import Products from './customer_components/Products.jsx'
 
 const projectRouts=createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const projectRouts=createBrowserRouter([
     children:
     [
       { path:"/login" , element: <Login/>},
-      { path:"/register" , element: <Register/>}
+      { path:"/register" , element: <Register/>},
+      { element:<Products/>, index:true}
     ]
   },
   {

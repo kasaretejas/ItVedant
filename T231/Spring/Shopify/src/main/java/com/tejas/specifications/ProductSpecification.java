@@ -1,0 +1,86 @@
+package com.tejas.specifications;
+
+import org.springframework.data.jpa.domain.Specification;
+
+import com.tejas.entities.Category;
+import com.tejas.entities.Product;
+import com.tejas.entities.SubCategory;
+
+import jakarta.persistence.criteria.Join;
+
+public class ProductSpecification {
+	
+	public static Specification<Product> containsProductNameAs(String productName)
+	{
+		return (root,criteriaQuery,criteriBuilder)->
+		{
+			if(productName==null || productName.isBlank())
+			{
+				return null;
+			}
+			//root.get("name"); ------> select name from product; here root is nothing but our product table
+			//%productName%
+			//"%"+productName+"%"
+			//criteriBuilder.like()
+			//return criteriBuilder.like(root.get("name"), "%"+productName+"%");
+			return criteriBuilder.like(criteriBuilder.lower(root.get("name")), "%"+productName.toLowerCase()+"%");
+		};
+	}
+
+	public static Specification<Product> sortByPrice(String sortDirection)
+	{
+		return (root,criteriaQuery,criteriBuilder)->
+		{
+			if(sortDirection==null || sortDirection.isBlank())
+			{
+				return null;
+			}
+			//root.get("price")----------------------> get price column
+			//criteriBuilder.desc(root.get("price"))-> price in desc
+			//criteriBuilder.asc(root.get("price"))--> price in asc
+			//criteriaQuery.orderBy(null)------------> for orderby
+			if(sortDirection.equalsIgnoreCase("asc"))
+			{
+				criteriaQuery.orderBy(criteriBuilder.asc(root.get("price")));
+			}
+			else
+			{
+				criteriaQuery.orderBy(criteriBuilder.desc(root.get("price")));
+			}
+			return null;
+		};
+	}
+
+	public static Specification<Product> hasSubCategoryName(String subCategoryName)
+	{
+		return (root,criteriaQuery,criteriBuilder)->
+		{
+			if(subCategoryName==null || subCategoryName.isBlank())
+			{
+				return null;
+			}
+			
+			Join<Product, SubCategory> productSubCategoryJoin=root.join("subCategory");
+			return criteriBuilder.equal(criteriBuilder.lower(productSubCategoryJoin.get("name")), subCategoryName.toLowerCase());
+		};
+	}
+
+	public static Specification<Product> hasCategoryName(String categoryName)
+	{
+		return (root,criteriaQuery,criteriBuilder)->
+		{
+			if(categoryName==null || categoryName.isBlank())
+			{
+				return null;
+			}
+			
+			Join<Product, SubCategory> productSubCategoryJoin=root.join("subCategory");
+			Join<Category, SubCategory> categorySubCategoryJoin=productSubCategoryJoin.join("category");
+			return criteriBuilder.equal(criteriBuilder.lower(categorySubCategoryJoin.get("name")), categoryName.toLowerCase());
+		};
+	}
+}
+
+
+
+

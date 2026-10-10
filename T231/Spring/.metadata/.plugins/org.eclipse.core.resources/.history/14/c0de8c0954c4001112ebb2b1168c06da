@@ -1,0 +1,26 @@
+package com.tejas.specifications;
+
+import org.springframework.data.jpa.domain.Specification;
+
+import com.tejas.entities.Product;
+
+public class ProductSpecification {
+	
+	public static Specification<Product> containsProductNameAs(String productName)
+	{
+		return (root,criteriaQuery,criteriBuilder)->
+		{
+			if(productName==null || productName.isBlank())
+			{
+				return null;
+			}
+			//root.get("name"); ------> select name from product; here root is nothing but our product table
+			//%productName%
+			//"%"+productName+"%"
+			//criteriBuilder.like()
+			//return criteriBuilder.like(root.get("name"), "%"+productName+"%");
+			return criteriBuilder.like(criteriBuilder.lower(root.get("name")), "%"+productName.toLowerCase()+"%");
+		};
+	}
+
+}

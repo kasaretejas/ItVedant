@@ -63,6 +63,24 @@ public class ProductController {
 	{
 		return productService.updateProduct(vendorId, productId, productObject, productImage);
 	}
+	
+	
+	//CUSTOMER RELATED PRODUCT SERVICES CONTROLLERS
+	@GetMapping("/get/products")
+	public ResponseEntity<CustomResponse> getAllProductsForCustomer()
+	{
+		return productService.getAllProductsForCustomer();
+	}
+	
+	@GetMapping("/get/filtered-products")
+	public ResponseEntity<CustomResponse> filterProductsForCustomer(
+			@RequestParam(name="productName", required = false) String productName,
+			@RequestParam(name="sortDirection", required = false) String sortDirection,
+			@RequestParam(name="subCategoryName", required = false) String subCategoryName,
+			@RequestParam(name="categoryName", required = false) String categoryName)
+	{
+		return productService.filterProductsForCustomer(productName,sortDirection,subCategoryName,categoryName);
+	}
 }
 
 

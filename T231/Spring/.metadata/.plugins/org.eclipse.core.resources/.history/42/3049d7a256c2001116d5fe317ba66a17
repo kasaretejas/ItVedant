@@ -1,0 +1,179 @@
+package com.tejas.services;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.tejas.entities.Product;
+import com.tejas.entities.SubCategory;
+import com.tejas.entities.Vendor;
+import com.tejas.repositories.ProductRepository;
+import com.tejas.repositories.SubCategoryRepository;
+import com.tejas.repositories.VendorRepository;
+import com.tejas.response_wrapper.CustomResponse;
+import com.tejas.response_wrapper.Response;
+
+import tools.jackson.databind.ObjectMapper;
+
+@Service
+public class ProductService {
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	VendorRepository vendorRepository;
+	@Autowired
+	SubCategoryRepository subCategoryRepository;
+	@Autowired
+	Response response;
+	
+	final String IMAGE_PATH  = System.getProperty("user.dir")+"/uploads/images";
+	public ResponseEntity<CustomResponse> addProduct(String productObject, MultipartFile productImage) throws IOException
+	{
+		//1. convert product object from String to Product itself
+			ObjectMapper objectMapper=new ObjectMapper();  //Student student = new Student();
+			Product product=objectMapper.readValue(productObject, Product.class);
+		
+		//2. getting subcategory id from product object and setting FK of subcategory into product
+			//2.1 ----> get existing subcategory
+			SubCategory existingSubcategory=subCategoryRepository.findById(product.getSubCategory().getId()).get();
+			//2.2 ----> set subcategory FK to product
+			product.setSubCategory(existingSubcategory);
+			
+		//3. getting vendor id from product object and setting FK of vendor into product
+			//3.1 ----> get existing vendor
+			Vendor existingVendor=vendorRepository.findById(product.getVendor().getId()).get();
+			//3.2 ----> set vendor FK to product
+			product.setVendor(existingVendor);
+			
+		//4. getting image name and setting that name into product object
+			String OriginalImageName=productImage.getOriginalFilename();
+			product.setImageName(OriginalImageName);
+			
+		//5. storing image into folder that we have created (uploads/images)
+			Path COMPLETE_IMAGE_PATH=Paths.get(IMAGE_PATH, OriginalImageName); //image location + file name
+			Files.write(COMPLETE_IMAGE_PATH, productImage.getBytes()); //where, what
+			
+		//6. save product
+			Product savedProduct=productRepository.save(product);
+			return response.send("Product Added!", null, HttpStatus.OK);
+		
+	}
+	
+	
+	
+	public ResponseEntity<CustomResponse> getAllProductsByVendorId(long vendorId)
+	{
+		List<Product> products=productRepository.findAllByVendorId(vendorId);
+		return response.send("Following Products found", products, HttpStatus.OK);
+		
+	}
+	
+	public ResponseEntity<CustomResponse> deleteProduct(long productId)
+	{
+		try
+			{
+				productRepository.deleteById(productId);
+				return response.send("Product Deleted!", null, HttpStatus.OK);
+			}
+		catch(Exception e)
+			{
+				return response.send("Product Deletion failed!", null, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+	}
+	
+	public ResponseEntity<CustomResponse> getProductByVendorIdAndProductId(long vendorId, long productId)
+	{
+		Optional<Product> existingProduct=productRepository.findByVendorIdAndId(vendorId, productId);
+		if(existingProduct.isPresent())
+		{
+			return response.send("Product found", existingProduct.get(), HttpStatus.OK);
+		}
+		else
+		{
+			return response.send("Product not found", null, HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	public ResponseEntity<CustomResponse> updateProduct(long vendorId, long productId, String productObject, MultipartFile productImage) throws IOException
+	{
+		Optional<Product> existingProduct=productRepository.findByVendorIdAndId(vendorId, productId);
+		if(existingProduct.isPresent())
+		{
+			//update logic
+			//1. convert product object from String to Product itself
+			ObjectMapper objectMapper=new ObjectMapper();  //Student student = new Student();
+			Product newProductData=objectMapper.readValue(productObject, Product.class);
+			
+			//2. getting subcategory id from newProductData  and setting FK of subcategory into newProductData
+			//2.1 ----> get existing subcategory
+			SubCategory existingSubcategory=subCategoryRepository.findById(newProductData.getSubCategory().getId()).get();
+			//2.2 ----> set subcategory FK to product
+			newProductData.setSubCategory(existingSubcategory);
+			
+			//3. getting vendor id from newProductData object and setting FK of vendor into newProductData
+			//3.1 ----> get existing vendor
+			Vendor existingVendor=vendorRepository.findById(newProductData.getVendor().getId()).get();
+			//3.2 ----> set vendor FK to product
+			newProductData.setVendor(existingVendor);
+			
+			//4. getting image name and setting that name into product object
+			String OriginalImageName=productImage.getOriginalFilename();
+			newProductData.setImageName(OriginalImageName);
+			
+			//5. storing image into folder that we have created (uploads/images)
+			Path COMPLETE_IMAGE_PATH=Paths.get(IMAGE_PATH, OriginalImageName); //image location + file name
+			Files.write(COMPLETE_IMAGE_PATH, productImage.getBytes()); //where, what
+			
+			
+			//6. getting id of existing product and set it to the newProduct. why? otherwise our product data will be instered as new product
+			newProductData.setId(existingProduct.get().getId());
+			
+			//6. getting created at of existing product and set it to the newProduct. 
+			// why? otherwise data for created At will be null
+			newProductData.setCreatedAt(existingProduct.get().getCreatedAt());
+			
+			//last step. save product
+			Product savedProduct=productRepository.save(newProductData);
+			return response.send("Product Added!", null, HttpStatus.OK);
+			
+		}
+		else
+		{
+			return response.send("Product updation failed!!", null, HttpStatus.NOT_FOUND);
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

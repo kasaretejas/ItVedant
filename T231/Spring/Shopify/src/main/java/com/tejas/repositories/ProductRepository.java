@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.tejas.entities.Product;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long>
+public interface ProductRepository extends JpaRepository<Product, Long>,JpaSpecificationExecutor<Product>
 {
 	//getting products for particular vendor by vendor's id
 	List<Product> findAllByVendorId(long vendorId);

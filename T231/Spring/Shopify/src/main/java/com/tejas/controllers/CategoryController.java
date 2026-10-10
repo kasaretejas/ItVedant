@@ -28,5 +28,11 @@ public class CategoryController {
 	{
 		return categoryService.getAllCategories();
 	}
+	
+	@GetMapping("/get/categories")
+	public ResponseEntity<CustomResponse> getCategories()
+	{
+		return categoryService.getAllCategories();
+	}
 
 }

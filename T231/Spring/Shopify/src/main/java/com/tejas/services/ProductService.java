@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import com.tejas.repositories.SubCategoryRepository;
 import com.tejas.repositories.VendorRepository;
 import com.tejas.response_wrapper.CustomResponse;
 import com.tejas.response_wrapper.Response;
+import com.tejas.specifications.ProductSpecification;
 
 import tools.jackson.databind.ObjectMapper;
 
@@ -67,8 +69,6 @@ public class ProductService {
 			return response.send("Product Added!", null, HttpStatus.OK);
 		
 	}
-	
-	
 	
 	public ResponseEntity<CustomResponse> getAllProductsByVendorId(long vendorId)
 	{
@@ -151,6 +151,28 @@ public class ProductService {
 			return response.send("Product updation failed!!", null, HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	
+	//CUSTOMER RELATED PRODUCT SERVICES
+	public ResponseEntity<CustomResponse> getAllProductsForCustomer()
+	{
+		List<Product> products=productRepository.findAll();
+		return response.send("Following products found", products, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<CustomResponse> filterProductsForCustomer(
+			String productName, String sortDirection, String subCategoryName,String categoryName)
+	{
+		Specification<Product> myCustomFilters=Specification.where
+															(ProductSpecification.containsProductNameAs(productName)
+															 .and(ProductSpecification.sortByPrice(sortDirection))
+															 .and(ProductSpecification.hasSubCategoryName(subCategoryName))
+															 .and(ProductSpecification.hasCategoryName(categoryName)));
+		List<Product> filteredProducts=productRepository.findAll(myCustomFilters);
+		return response.send("Following products found", filteredProducts, HttpStatus.OK);
+		
+	}
+	
 	
 }
 

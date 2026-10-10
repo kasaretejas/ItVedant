@@ -1,0 +1,5 @@
+routing 
+    is used for on demand component rendering
+    on which URL what component should be displayed/render
+
+outlet : while rendering on demand components, we use Outlet to switch between components
