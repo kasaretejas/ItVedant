@@ -1,0 +1,22 @@
+package com.tejas.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tejas.repositories.CartRepository;
+import com.tejas.repositories.CustomerRepository;
+import com.tejas.repositories.ProductRepository;
+
+@Service
+public class CartService 
+{
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
+
+}

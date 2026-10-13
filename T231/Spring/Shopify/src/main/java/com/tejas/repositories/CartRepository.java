@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.tejas.entities.Cart;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Long> {
+public interface CartRepository extends JpaRepository<Cart, Long> 
+{
+	boolean existsByCustomerIdAndProductId(long customerId, long productId);
 
 }
