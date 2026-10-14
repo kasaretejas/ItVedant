@@ -25,7 +25,6 @@ export default function Products() {
     async function filterProducts(categoryName, subCategoryName, sortDirection, productName)
     {
         let BaseURL = "http://localhost:8080/api/v1/get/filtered-products?"
-        console.log(categoryName, subCategoryName, sortDirection, productName);
         let urlParams=new URLSearchParams()
         if(categoryName && categoryName!="all")
         {
@@ -44,7 +43,7 @@ export default function Products() {
             urlParams.append("productName", productName)
         }
 
-        console.log(BaseURL+urlParams.toString());
+        //console.log(BaseURL+urlParams.toString());
         let response=await fetch(BaseURL+urlParams.toString())
         let responseObject=await response.json()  
         setProducts(responseObject.data)  

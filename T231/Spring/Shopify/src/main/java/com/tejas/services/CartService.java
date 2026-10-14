@@ -1,5 +1,7 @@
 package com.tejas.services;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,13 @@ public class CartService
 		}
 	}
 
+	
+	public ResponseEntity<CustomResponse> getCartItems(long customerId)
+	{
+		List<Cart> cartItems=cartRepository.findByCustomerId(customerId);
+		//cartItems ----> cartItem -----> {id, product_id, customer_id, quantity} ---> here we get only product id, not product
+		return response.send("Following cart items found", cartItems, HttpStatus.OK);
+	}
 }
 
 

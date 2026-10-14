@@ -1,0 +1,30 @@
+package com.tejas.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tejas.response_wrapper.CustomResponse;
+import com.tejas.services.CartService;
+
+@RestController
+@RequestMapping("/api/v1")
+public class CartController {
+	
+	@Autowired
+	CartService cartService;
+	
+	@PostMapping("/customer/add-to-cart/{customerId}/{productId}")
+	public ResponseEntity<CustomResponse> addToCart(
+			@PathVariable("customerId") long customerId, 
+			@PathVariable("productId") long productId)
+	{
+		return cartService.addToCart(customerId, productId);
+	}
+
+}
+
+

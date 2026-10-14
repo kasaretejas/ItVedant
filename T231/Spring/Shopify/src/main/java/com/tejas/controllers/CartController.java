@@ -2,6 +2,7 @@ package com.tejas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,12 @@ public class CartController {
 			@PathVariable("productId") long productId)
 	{
 		return cartService.addToCart(customerId, productId);
+	}
+	
+	@GetMapping("/customer/carts/{customerId}")
+	public ResponseEntity<CustomResponse> getCartItems(@PathVariable("customerId") long customerId)
+	{
+		return cartService.getCartItems(customerId);
 	}
 
 }

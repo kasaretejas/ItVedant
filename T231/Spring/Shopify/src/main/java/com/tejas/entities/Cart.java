@@ -1,5 +1,8 @@
 package com.tejas.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +21,7 @@ public class Cart {
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Customer customer;
 	//product_id
 	

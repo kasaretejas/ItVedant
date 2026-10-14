@@ -34,7 +34,7 @@ export default function Navbar() {
                 userData?
                 <>
                   <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" >Cart</Link>
+                  <Link className="nav-link active" aria-current="page" to={"/my-cart"}>Cart</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" >Orders</Link>

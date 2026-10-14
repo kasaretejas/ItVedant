@@ -16,6 +16,7 @@ import AddProduct from './vendor_components/AddProduct.jsx'
 import DisplayProducts from './vendor_components/DisplayProducts.jsx'
 import UpdateProduct from './vendor_components/UpdateProduct.jsx'
 import Products from './customer_components/Products.jsx'
+import Cart from './customer_components/Cart.jsx'
 
 const projectRouts=createBrowserRouter([
   {
@@ -25,7 +26,8 @@ const projectRouts=createBrowserRouter([
     [
       { path:"/login" , element: <Login/>},
       { path:"/register" , element: <Register/>},
-      { element:<Products/>, index:true}
+      { element:<Products/>, index:true},
+      { path:"/my-cart" , element: <Cart/>}
     ]
   },
   {
