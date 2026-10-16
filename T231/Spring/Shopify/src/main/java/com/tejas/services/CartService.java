@@ -63,6 +63,28 @@ public class CartService
 		//cartItems ----> cartItem -----> {id, product_id, customer_id, quantity} ---> here we get only product id, not product
 		return response.send("Following cart items found", cartItems, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<CustomResponse> deleteCartItem(long cartId)
+	{
+		try
+		{
+			cartRepository.deleteById(cartId);
+			return response.send("Product Deleted!", null, HttpStatus.OK);
+		}
+		catch(Exception exception)
+		{
+			return response.send("Product Deletion failed!", null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	public ResponseEntity<CustomResponse> changeQuantity(long cartId, int quantity)
+	{
+		Cart existingCart=cartRepository.findById(cartId).get();
+		existingCart.setQunatity(quantity);
+		cartRepository.save(existingCart);
+		return response.send("Quantity Updated", null, HttpStatus.OK);
+		
+	}
 }
 
 
