@@ -1,0 +1,5 @@
+package com.tejas.repositories;
+
+public interface OrderItemRepository {
+
+}

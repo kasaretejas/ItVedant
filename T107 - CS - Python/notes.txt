@@ -1,0 +1,18 @@
+basics of PL : 
+    1. where to store data
+        variable : used to store data
+        age = 30 ----> here age is variable and 30 is data
+
+    2. what type of data
+        numeric - int, float, complex 
+        characters - str (string)
+        yes/no - boolean
+        collection - list, tuple, set, frozenset, dict (dictionary)
+    3. operation on data 
+        operators : symbols, used to perform operation on data
+        arthmatic : +,-,*,/,%
+        assigment : =, +=, -=, *=....
+        comparision : >,<,>=,<=,!=,==
+        logical : and, or, not
+        identity : is, is not
+        membership : in, not in
