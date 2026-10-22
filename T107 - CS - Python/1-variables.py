@@ -5,6 +5,7 @@ print(age)
 
 #2age  = 40 -------> dont start with number
 #age@kyahe = 50 ---> dont use special character
+age22 = 30
 _age = 90
 print(_age)
 first_name = "raj" #snake notation : allowed
