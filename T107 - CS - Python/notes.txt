@@ -16,3 +16,21 @@ basics of PL :
         logical : and, or, not
         identity : is, is not
         membership : in, not in
+    4- taking user input
+        to take input from user, we have to use input() built in method in python
+    4- conditional statements
+        when execution of action is depends on condition
+        ex : action : watch movie on laptop / go on bike ride
+             condition : rain 
+             if there is rain ---> watch movie on laptop
+             otheriwise(else) ---------> go on bike ride
+
+             but in python to undertsnd conditional statements we have to use : if, elif, else
+             if (condition)-------> when there is only one collection
+             elif (condition)-----> when there are multilple conditions
+             else ----------------> to show default action
+
+    5- looping statements
+    6- transfer statements
+    7- identity and membership
+    8- collection data type in dept
