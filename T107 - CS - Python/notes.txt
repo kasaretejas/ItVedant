@@ -29,8 +29,47 @@ basics of PL :
              if (condition)-------> when there is only one collection
              elif (condition)-----> when there are multilple conditions
              else ----------------> to show default action
+             if is entry point and else is exit point. in between them we have to use elif
 
+            SYNTAX : 
+                if(condition):
+                    action/logic
+                elif(condition):
+                    action/logic
+                else:
+                    action/logic
+
+    ------------------------- understanding range() function --------
+    range(1,5) ------> 1,2,3,4
+    range(1,6) ------> 1,2,3,4,5
+    range(1,10,2)----> 1,3,5,7,9
+    range(25,30,1)---> plus sign of 1 means we have to go from L to R on number system
+                  ---> 25,26,27,28,29
+    range(25,30,-1)--> minus sign of 1 means we have to go from R to L on number system
+                 ----> NO OUPUT
+    ----------------------------------------------------------------
     5- looping statements
+        to execute some logic for given number of iteration
+        to execute some logic repeatedly
+        for loop and while loop
+        there is common rule for any loop : initialization, condition, inc/dec
+        for loop - 
+            when we know for how many times we have to execute given logic
+            when to stop
+            ex : even numbers between 1 to 10
+            for loop has multiple case studies -  
+                range , range with variations,  collection, string
+            syntax : 
+                    for(range/collection/string):
+                            logic
+        while loop - 
+            when we dont know for how many times we have to execute given logic
+            dont know when to stop 
+            ex : ask password until user enters correct password
+            therfore while loop has limited case studies but complex
+            syntax : 
+                  while(condition):
+                    logic
     6- transfer statements
     7- identity and membership
     8- collection data type in dept
