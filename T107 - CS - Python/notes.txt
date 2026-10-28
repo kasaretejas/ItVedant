@@ -69,7 +69,8 @@ basics of PL :
             therfore while loop has limited case studies but complex
             syntax : 
                   while(condition):
-                    logic
+                    logic ---> to stop the loop
+                    inc/dec
     6- transfer statements
     7- identity and membership
     8- collection data type in dept
