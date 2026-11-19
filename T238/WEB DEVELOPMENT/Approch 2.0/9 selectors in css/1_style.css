@@ -1,0 +1,20 @@
+h1 {
+     color: blue;
+}
+
+/* p {
+    color: red;
+} */
+
+#p_in_red {
+    color: red;
+}
+
+#p_in_green {
+    color: green;
+}
+
+.in_orange
+{
+    color: orange;
+}
