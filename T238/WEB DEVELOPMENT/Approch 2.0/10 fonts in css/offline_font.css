@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "myfont";
+    src: url("fonts/myfont.ttf");
+}
+
+p
+{
+    font-family: "myfont";
+    font-size: 100px;
+}

@@ -1,0 +1,38 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+#text_style
+{
+    font-size: 100px;
+    font-family: fantasy;
+    background-color: pink;
+    font-weight: lighter;
+    font-variant: normal;
+    font-style: italic;
+    color: brown;
+
+    text-shadow: 4px 7px 5px grey;
+    text-align: center;
+}
+
+#box
+{
+    height: 150px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 50px;
+    box-shadow: 4px 7px 5px grey;    
+}
+
+#box > p 
+{
+    text-indent: 30px;
+    line-height: 30px;
+    word-spacing: 15px;
+    user-select: none;
+}

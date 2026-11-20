@@ -18,3 +18,8 @@ h1 {
 {
     color: orange;
 }
+
+h3, #p_in_green, .in_orange
+{
+    background-color: pink;
+}
